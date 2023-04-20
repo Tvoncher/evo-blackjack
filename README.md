@@ -2,7 +2,7 @@
 
 ## Local launch
 
-Install dependencies with yarn install./
+Install dependencies with yarn install.\
 Run the server with yarn start.
 
 ### Available scripts
