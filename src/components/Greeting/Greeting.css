@@ -1,0 +1,34 @@
+.greeting {
+  height: 100dvh;
+  width: 100dvw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-button {
+  border-radius: 50%;
+  border-color: var(--font-golden-color);
+  padding: 3vw;
+  font-size: 3vw;
+  color: var(--font-golden-color);
+  background: var(--main-bg-color);
+  transition: 0.7s;
+  animation: pulsing 2s infinite ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes pulsing {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 0.9;
+  }
+
+  100% {
+    scale: 1;
+  }
+}

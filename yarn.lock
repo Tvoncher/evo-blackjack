@@ -1079,6 +1079,21 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@babylonjs/core@^5.55.0":
+  version "5.55.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-5.55.0.tgz#50b2fc3b2a5eb6fb800b281508ff918ef0c32933"
+  integrity sha512-L8SLkFh9gHbfA22wJcR6yxQWD5sPsVJc1MY337PdwcpFdnau5+sZ7AzWlRf4ShP+WgAUpNsksd9rW5YECLuX6w==
+
+"@babylonjs/gui@^5.55.0":
+  version "5.55.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-5.55.0.tgz#4d31cc39454811628e02a4758c1f46ec52f10422"
+  integrity sha512-4qld1aS80+uShbnjc1/I4Zh3WD4nnw9dfVqGo/qQVXIpeKkA2WoUqNBAhhd+GDC6dHCF7VjIbeIMvGpe9ntuTw==
+
+"@babylonjs/loaders@^5.55.0":
+  version "5.55.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/loaders/-/loaders-5.55.0.tgz#a3c5dd732a86032d84d454e560ebc9c51dfad77f"
+  integrity sha512-JErhg0pj1Ij/211brTbGKqj7E0xXQCAODSD3RP4j8GkUOclSt4VCrY6xogEo8sCaiI/IXeyTlcfwzVfAgZUctw==
+
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
@@ -6320,6 +6335,16 @@ mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.6"
 
+mobx-react-lite@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-3.4.3.tgz#3a4c22c30bfaa8b1b2aa48d12b2ba811c0947ab7"
+  integrity sha512-NkJREyFTSUXR772Qaai51BnE1voWx56LOL80xG7qkZr6vo8vEaLF3sz1JNUVh+rxmUzxYaqOhfuxTfqUh0FXUg==
+
+mobx@^6.9.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.9.0.tgz#8a894c26417c05bed2cf7499322e589ee9787397"
+  integrity sha512-HdKewQEREEJgsWnErClfbFoVebze6rGazxFLU/XUyrII8dORfVszN1V0BMRnQSzcgsNNtkX8DHj3nC6cdWE9YQ==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -7476,6 +7501,13 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-babylonjs@^3.1.15:
+  version "3.1.15"
+  resolved "https://registry.yarnpkg.com/react-babylonjs/-/react-babylonjs-3.1.15.tgz#652460197df11a63fe89c5066d4f50189ec18ffd"
+  integrity sha512-Jr2b9D0JTnYcEubCBpVW7y+oQA7+3lTD/oUQWHphsw/k3kd4rRmDr4Itteht0P6050Z3JJelXqqkge+J36q2og==
+  dependencies:
+    react-reconciler "^0.27.0"
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
@@ -7533,6 +7565,14 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-reconciler@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.27.0.tgz#360124fdf2d76447c7491ee5f0e04503ed9acf5b"
+  integrity sha512-HmMDKciQjYmBRGuuhIaKA1ba/7a+UsM5FzOZsMO2JYHt9Jh8reCb7j1eDC95NOyUlKM9KRyvdx0flBuDvYSBoA==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.21.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -7880,6 +7920,13 @@ saxes@^5.0.1:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
+
+scheduler@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
+  integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
+  dependencies:
+    loose-envify "^1.1.0"
 
 scheduler@^0.23.0:
   version "0.23.0"
