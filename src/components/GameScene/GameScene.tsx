@@ -1,22 +1,26 @@
-import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { FC, Suspense, useContext, useEffect } from "react";
 import { Engine, Scene } from "react-babylonjs";
 import "./GameScene.css";
-import { startGame } from "../../utils/gameLogic";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { CardsHandler } from "./Cards/CardsHandler";
-import { MainStoreContext, mainStore } from "../../stores/MainStore";
+import { MainStoreContext } from "../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import DealButton from "./babylonUI/DealButton";
 import PlayerSpots from "./PlayerSpots/PlayerSpots";
 import { Room } from "./Room/Room";
 import Dealer from "./DealerModel/Dealer";
 import UI from "../UI/UI";
+import { baseCameraParams, baseLightParams } from "../../utils/consts";
+import { startGame } from "../../utils/utils";
+import DealerSpot from "./DealerSpot/DealerSpot";
 
 // handling everything connected with babylonjs
 const GameScene: FC = observer(() => {
   const context = useContext(MainStoreContext);
-  const isLoading = mainStore.roomStore.isLoading;
+  const isLoading = context?.roomStore.isLoading;
+
+  const { alpha, beta, radius, target } = baseCameraParams;
+  const { intensity, direction } = baseLightParams;
 
   useEffect(() => {
     startGame();
@@ -30,15 +34,15 @@ const GameScene: FC = observer(() => {
         <Scene>
           <arcRotateCamera
             name="camera1"
-            target={new Vector3(0, 2, 0)}
-            alpha={Math.PI / 2}
-            beta={Math.PI / 2.8}
-            radius={7}
+            target={target}
+            alpha={alpha}
+            beta={beta}
+            radius={radius}
           />
           <hemisphericLight
             name="light1"
-            intensity={0.7}
-            direction={new Vector3(0, 1, 0)}
+            intensity={intensity}
+            direction={direction}
           />
           {/*MUST use suspense with react-babylon */}
           <Suspense>
@@ -47,6 +51,7 @@ const GameScene: FC = observer(() => {
             <CardsHandler />
             <DealButton />
             <PlayerSpots />
+            <DealerSpot />
           </Suspense>
         </Scene>
       </Engine>

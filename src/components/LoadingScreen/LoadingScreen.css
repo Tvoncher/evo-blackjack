@@ -1,4 +1,4 @@
-.loader-container {
+.loader {
   position: absolute;
   width: 100dvw;
   height: 100dvh;
@@ -11,7 +11,11 @@
   align-items: center;
 }
 
-.loading-play-button {
+.loader__img {
+  animation: 10s fading;
+}
+
+.loader__button {
   border-radius: 50%;
   border-color: var(--font-golden-color);
   padding: 3vw;
@@ -19,10 +23,6 @@
   color: var(--font-golden-color);
   background: var(--main-bg-color);
   transition: 0.7s;
-  animation: 10s fading;
-}
-
-.fading-img {
   animation: 10s fading;
 }
 

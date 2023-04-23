@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Color3, Texture, ArcRotateCamera } from "@babylonjs/core";
@@ -6,8 +6,6 @@ import { useClick, useScene } from "react-babylonjs";
 import { mainStore } from "../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import { PlayerSpotStatus, RoomState } from "../../../types/types";
-import { checkPoints, findActiveSpot } from "../../../utils/gameLogic";
-import { recalculatePoints } from "../../../utils/utils";
 import CardsTooltip from "../babylonUI/CardsTooltip";
 import Buttons from "./Buttons";
 

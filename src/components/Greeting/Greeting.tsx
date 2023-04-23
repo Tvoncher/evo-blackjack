@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "./Greeting.css";
-import { useGameStart } from "../../hooks/useGameStart";
+import { useAuth } from "../../hooks/useAuth";
 
 interface GreetingProps {
   setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
@@ -8,12 +8,12 @@ interface GreetingProps {
 
 // showing greeting screen and starting game
 const Greeting: FC<GreetingProps> = ({ setIsStarted }) => {
-  const handleGameStart = useGameStart(setIsStarted);
+  const handleAuth = useAuth(setIsStarted);
 
   return (
     <div className="greeting">
       <img src="images/logo.png" alt="logo" />
-      <button className="play-button" onClick={handleGameStart}>
+      <button className="play-button" onClick={handleAuth}>
         Play
       </button>
     </div>

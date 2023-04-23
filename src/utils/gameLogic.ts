@@ -4,18 +4,6 @@ import { IPlayerSpot, PlayerSpotStatus, RoomState } from "../types/types";
 
 //single file for handling main logic flow
 
-export const startGame = () => {
-  setTimeout(() => {
-    //create and assign new shuffled deck
-    mainStore.roomStore.shuffleDeck();
-    //awaiting bets
-    mainStore.roomStore.setRoomState(RoomState.betting);
-    //give cards
-    //set state to playing
-  }, 1000);
-};
-
-//TODO: sometimes misses one playerSPot
 export const findActiveSpot = (): void => {
   const activePlayerSpot: IPlayerSpot | undefined =
     mainStore.playerSpotsStore.playerSpots.find(

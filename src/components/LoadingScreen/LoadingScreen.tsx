@@ -3,9 +3,9 @@ import "./LoadingScreen.css";
 
 const LoadingScreen: FC = () => {
   return (
-    <div className="loader-container">
-      <img className="fading-img" src="images/logo.png" alt="logo" />
-      <button className="loading-play-button">Play</button>
+    <div className="loader">
+      <img className="loader__img" src="images/logo.png" alt="logo" />
+      <button className="loader__button">Play</button>
     </div>
   );
 };

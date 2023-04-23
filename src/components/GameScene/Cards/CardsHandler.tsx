@@ -1,4 +1,4 @@
-import { assetsTask } from "./AssetManager";
+import { assetsTask } from "../../assetsTask";
 import { FC, useEffect, useState } from "react";
 import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
@@ -7,13 +7,15 @@ import Card from "./Card";
 import { observer } from "mobx-react-lite";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
-import DealerSpot from "../DealerSpot/DealerSpot";
+import { Vector3 } from "@babylonjs/core/Maths/math.vector";
+import { dealerSpotPosition } from "../../../utils/consts";
 
 //displaying cards
 
 export const CardsHandler: FC = observer(() => {
   const assetManagerResult = useAssetManager(assetsTask);
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);
+  const dealerCards = mainStore.roomStore.dealerCards;
 
   //TODO: getting playerSpots from context. Each player spot is responsible for hand and bet
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
@@ -42,12 +44,24 @@ export const CardsHandler: FC = observer(() => {
           ))
         )}
 
-      {/*dealer cards and points tooltip*/}
-
-      <DealerSpot
-        cardMesh={cardMesh}
-        points={mainStore.roomStore.dealerPoints}
-      />
+      {/*dealer cards*/}
+      {mainStore.roomStore.roomState === RoomState.playing &&
+        dealerCards.map((card, i) => (
+          <Card
+            key={card.rank + card.suit + i}
+            card={cardMesh}
+            value={card.value}
+            suit={card.suit}
+            rank={card.rank}
+            offset={i / 10}
+            position={dealerSpotPosition}
+            rotation={
+              dealerCards.length === 2 && i === 1
+                ? new Vector3(0, 0, Math.PI)
+                : Vector3.Zero()
+            }
+          />
+        ))}
     </>
   ) : null;
 });

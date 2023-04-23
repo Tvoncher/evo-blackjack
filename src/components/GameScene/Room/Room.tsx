@@ -1,11 +1,10 @@
 import { FC, useEffect } from "react";
 import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
-import { useAssetManager, useScene } from "react-babylonjs";
+import { useAssetManager } from "react-babylonjs";
 import { observer } from "mobx-react-lite";
-import { assetsTask } from "../Cards/AssetManager";
+import { assetsTask } from "../../assetsTask";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
-import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { mainStore } from "../../../stores/MainStore";
 
 //displaying room

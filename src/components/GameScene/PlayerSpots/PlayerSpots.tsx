@@ -10,14 +10,7 @@ const PlayerSpots: FC = observer(() => {
   return (
     <>
       {playerSpots.map((playerSpot) => (
-        <PlayerSpot
-          key={playerSpot.index}
-          position={playerSpot.position}
-          rotation={playerSpot.rotation}
-          status={playerSpot.status}
-          index={playerSpot.index}
-          points={playerSpot.points}
-        />
+        <PlayerSpot key={playerSpot.index} {...playerSpot} />
       ))}
     </>
   );

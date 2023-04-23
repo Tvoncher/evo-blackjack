@@ -1,6 +1,11 @@
 import { toJS } from "mobx";
 import { mainStore } from "../stores/MainStore";
-import { IPlayerSpot, IUser, PlayerSpotStatus } from "../types/types";
+import {
+  IPlayerSpot,
+  IUser,
+  PlayerSpotStatus,
+  RoomState,
+} from "../types/types";
 import { startingBalance } from "./consts";
 
 export const shuffleDeck = () => {
@@ -36,6 +41,15 @@ export const recalculatePoints = (index: number, recalcForDealer: boolean) => {
   if (recalcForDealer) {
     mainStore.roomStore.recalculateDealerPoints();
   }
+};
+
+export const startGame = () => {
+  setTimeout(() => {
+    //creating and assigning new shuffled deck
+    mainStore.roomStore.shuffleDeck();
+    //changing room state to awaiting bets
+    mainStore.roomStore.setRoomState(RoomState.betting);
+  }, 1000);
 };
 
 export const initialDeck = [

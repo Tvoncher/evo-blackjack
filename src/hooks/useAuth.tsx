@@ -2,16 +2,16 @@ import { useCallback, useContext } from "react";
 import { MainStoreContext } from "../stores/MainStore";
 
 //loading / creating user
-export const useGameStart = (
+export const useAuth = (
   setIsStarted: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const context = useContext(MainStoreContext);
   const userStore = context?.userStore;
 
-  const handleGameStart = useCallback(() => {
+  const handleAuth = useCallback(() => {
     userStore?.userAuth();
     setIsStarted(() => true);
   }, []);
 
-  return handleGameStart;
+  return handleAuth;
 };

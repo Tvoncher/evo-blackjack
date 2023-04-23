@@ -56,3 +56,15 @@ export interface IPlayerSpotsPositions {
   3: Vector3;
   4: Vector3;
 }
+
+export interface IBaseCameraParams {
+  alpha: number;
+  beta: number;
+  radius: number;
+  target: Vector3;
+}
+
+export interface IBaseLightParams {
+  intensity: number;
+  direction: Vector3;
+}

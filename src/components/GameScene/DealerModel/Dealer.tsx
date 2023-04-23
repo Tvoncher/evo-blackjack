@@ -3,7 +3,7 @@ import { useAssetManager } from "react-babylonjs";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { AnimationGroup, Color3, Mesh, MeshAssetTask } from "@babylonjs/core";
-import { assetsTask } from "../Cards/AssetManager";
+import { assetsTask } from "../../assetsTask";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 
