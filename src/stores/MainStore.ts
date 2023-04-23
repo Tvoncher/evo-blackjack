@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { PlayerSpotsStore } from "./PlayerSpotsStore";
-import { observable, makeObservable } from "mobx";
+import { makeObservable, observable } from "mobx";
 import { UserStore } from "./UserStore";
 import { RoomStore } from "./RoomStore";
 
@@ -11,7 +11,9 @@ class MainStore {
   roomStore = new RoomStore();
   userStore = new UserStore();
 
-  constructor() {}
+  constructor() {
+    makeObservable(this);
+  }
 }
 
 export const mainStore = new MainStore();

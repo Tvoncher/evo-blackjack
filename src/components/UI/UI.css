@@ -25,3 +25,33 @@
 h4 {
   color: var(--font-golden-color);
 }
+
+.win-loss-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100dvw;
+  height: 10dvh;
+  top: 10vh;
+
+  animation: 2s win-loss-anim infinite ease-out;
+}
+
+.bg-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.you-win {
+  color: var(--font-golden-color);
+}
+
+@keyframes win-loss-anim {
+  0% {
+    transform: translateY(-200px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

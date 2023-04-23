@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
+
 :root {
   --main-bg-color: radial-gradient(
     circle,
@@ -6,11 +8,21 @@
   );
 
   --font-golden-color: #d1a41a;
+  font-family: "Inter", sans-serif;
+
+  --buttons-border: linear-gradient(
+    180deg,
+    #ffffff 5%,
+    #e3d78f 10%,
+    #836929 60%,
+    rgb(230, 179, 76) 85%
+  );
+
+  overflow: hidden;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: "hidden";
 }

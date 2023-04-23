@@ -1,12 +1,24 @@
-import { Task, TaskType } from "react-babylonjs";
+import { MeshTask, TaskType } from "react-babylonjs";
 
-//creating download task for card mesh
+//creating asset tasks for meshes
 
-export const assetManager: Task[] = [
+export const assetsTask: MeshTask[] = [
+  {
+    taskType: TaskType.Mesh,
+    rootUrl: `models/`,
+    sceneFilename: "dealer.glb",
+    name: "dealer",
+  },
   {
     taskType: TaskType.Mesh,
     rootUrl: `models/`,
     sceneFilename: "card.glb",
     name: "card",
+  },
+  {
+    taskType: TaskType.Mesh,
+    rootUrl: `models/`,
+    sceneFilename: "room.glb",
+    name: "room",
   },
 ];

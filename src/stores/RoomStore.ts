@@ -29,6 +29,9 @@ export class RoomStore {
   roomState: RoomState = RoomState.waiting;
 
   @observable
+  isLoading: boolean = true;
+
+  @observable
   disposeReaction: IReactionDisposer;
 
   public constructor() {
@@ -67,6 +70,11 @@ export class RoomStore {
   }
 
   @action
+  setIsLoaded() {
+    this.isLoading = false;
+  }
+
+  @action
   setRoomState(state: RoomState) {
     this.roomState = state;
   }
@@ -84,8 +92,10 @@ export class RoomStore {
   @action
   recalculateDealerPoints() {
     let newPoints: number = 0;
-    this.dealerCards.forEach((card) => (newPoints += card.value));
-    this.dealerPoints = newPoints;
+    if (this.dealerCards.length > 2) {
+      this.dealerCards.forEach((card) => (newPoints += card.value));
+      this.dealerPoints = newPoints;
+    } else this.dealerPoints = this.dealerCards[0].value;
   }
 
   @action

@@ -2,13 +2,14 @@ import { FC, useCallback, useEffect, useRef, useState } from "react";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Color3, Texture, ArcRotateCamera } from "@babylonjs/core";
-import { Html, useClick, useScene } from "react-babylonjs";
+import { useClick, useScene } from "react-babylonjs";
 import { mainStore } from "../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import { PlayerSpotStatus, RoomState } from "../../../types/types";
 import { checkPoints, findActiveSpot } from "../../../utils/gameLogic";
 import { recalculatePoints } from "../../../utils/utils";
 import CardsTooltip from "../../UI/CardsTooltip";
+import Buttons from "./Buttons";
 
 interface IPlayerSpotProps {
   points: number;
@@ -54,34 +55,13 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
 
     const bumpTexture: Texture = new Texture("textures/bumpTexture.png");
 
-    const handleHit = useCallback(() => {
-      const newCard = roomStore.takeCards(1);
-      mainStore.playerSpotsStore.playerSpots[index].hand = [
-        ...mainStore.playerSpotsStore.playerSpots[index].hand,
-        ...newCard,
-      ];
-      recalculatePoints(index, false);
-
-      checkPoints(index);
-    }, [points]);
-
-    const handleStand = useCallback(() => {
-      //reseting status and calling awesome function to find next spot with bets
-      mainStore.playerSpotsStore.setPlayerSpotStatus(
-        index,
-        PlayerSpotStatus.inactive
-      );
-
-      findActiveSpot();
-    }, []);
-
     //changing camera angle if playerSpot is active
     const scene = useScene();
     if (status === PlayerSpotStatus.active && scene) {
       const camera = scene.cameras[0] as ArcRotateCamera;
-      // TODO: adjust angles
-      //camera.alpha =
-      camera.radius = 6.5;
+
+      camera.alpha = Math.PI / 2 + Math.sin(rotation._y / 2);
+      camera.radius = 6;
     }
 
     return (
@@ -131,46 +111,7 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
           </cylinder>
         ))}
 
-        {/*TODO:replace with component */}
-        <adtFullscreenUi name="ui">
-          {/*hit stand buttons */}
-          {roomState === RoomState.playing &&
-            status === PlayerSpotStatus.active && (
-              <stackPanel isVertical={false}>
-                <babylon-ellipse
-                  name="hit-button"
-                  height="80px"
-                  width="80px"
-                  background="red"
-                  onPointerDownObservable={handleHit}
-                >
-                  <textBlock
-                    text={"HIT"}
-                    fontFamily="FontAwesome"
-                    fontStyle="bold"
-                    fontSize={20}
-                    color="white"
-                  />
-                </babylon-ellipse>
-
-                <babylon-ellipse
-                  name="stand-button"
-                  height="80px"
-                  width="80px"
-                  background="DarkGreen"
-                  onPointerDownObservable={handleStand}
-                >
-                  <textBlock
-                    text={"STAND"}
-                    fontFamily="FontAwesome"
-                    fontStyle="bold"
-                    fontSize={20}
-                    color="white"
-                  />
-                </babylon-ellipse>
-              </stackPanel>
-            )}
-        </adtFullscreenUi>
+        <Buttons points={points} index={index} status={status} />
       </>
     );
   }
