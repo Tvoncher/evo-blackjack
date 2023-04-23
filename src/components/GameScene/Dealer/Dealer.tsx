@@ -24,16 +24,6 @@ const Dealer: FC = ({}) => {
     ] as MeshAssetTask;
 
     const dealer: Mesh = dealerTask.loadedMeshes[0] as Mesh;
-    dealer.position = new Vector3(0, 0, 1.5);
-
-    //TODO: WHY its rotating after scale
-    dealer.rotation = new Vector3(0, 0, 0);
-    dealer.scaling = new Vector3(3, 3, 3);
-
-    /*animationDealing.onAnimationGroupEndObservable.add(runIdleAnim);
-      animationEnding.onAnimationGroupEndObservable.add(runIdleAnim);
-      animationGreeting.onAnimationGroupEndObservable.add(runIdleAnim);
-      animationGreeting.play(); */
 
     const animationGroups: AnimationGroup[] = dealerTask.loadedAnimationGroups;
 
@@ -77,15 +67,20 @@ const Dealer: FC = ({}) => {
     }
   }, [roomState, animationGroups]);
 
+  // hiding loading screen
+  useEffect(() => {
+    mainStore.roomStore.setIsLoaded();
+  });
+
   return (
     <>
       {/*just a glowing part of table */}
       <box
         name="glowing-mesh"
-        width={5}
-        height={0.01}
+        width={1.7}
+        height={0.005}
         depth={0.005}
-        position={new Vector3(0, 3.15, 2.1)}
+        position={new Vector3(0, 1.05, 0.2)}
       >
         <standardMaterial
           name="glowing-material"
@@ -94,9 +89,8 @@ const Dealer: FC = ({}) => {
       </box>
       <pointLight
         name="floor-light"
-        position={new Vector3(0, 1.8, 5)}
-        diffuse={new Color3(0, 0.7, 1)}
-        intensity={5}
+        position={new Vector3(0, 0.8, 1)}
+        diffuse={new Color3(0, 0.2, 1.5)}
       />
     </>
   );

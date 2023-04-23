@@ -6,12 +6,6 @@ export const assetsTask: MeshTask[] = [
   {
     taskType: TaskType.Mesh,
     rootUrl: `models/`,
-    sceneFilename: "dealer.glb",
-    name: "dealer",
-  },
-  {
-    taskType: TaskType.Mesh,
-    rootUrl: `models/`,
     sceneFilename: "card.glb",
     name: "card",
   },
@@ -20,5 +14,11 @@ export const assetsTask: MeshTask[] = [
     rootUrl: `models/`,
     sceneFilename: "room.glb",
     name: "room",
+  },
+  {
+    taskType: TaskType.Mesh,
+    rootUrl: `models/`,
+    sceneFilename: "dealer.glb",
+    name: "dealer",
   },
 ];

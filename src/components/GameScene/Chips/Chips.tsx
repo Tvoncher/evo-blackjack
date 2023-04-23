@@ -46,15 +46,18 @@ const Chips: FC = () => {
     );
   }, []);
 
+  const height = 0.01;
+  const diameter = 0.06;
+
   return (
     <>
       <glowLayer name="glow-layer" intensity={1} />
 
       <cylinder
         name="1"
-        height={0.04}
-        diameter={0.2}
-        position={new Vector3(0.36, 3.1, 3.95)}
+        height={height}
+        diameter={diameter}
+        position={new Vector3(0.12, 1.04, 0.81)}
         onCreated={handleActions}
       >
         <standardMaterial
@@ -65,9 +68,9 @@ const Chips: FC = () => {
       </cylinder>
       <cylinder
         name="5"
-        height={0.04}
-        diameter={0.2}
-        position={new Vector3(0.12, 3.1, 4)}
+        height={height}
+        diameter={diameter}
+        position={new Vector3(0.04, 1.04, 0.83)}
         onCreated={handleActions}
       >
         <standardMaterial
@@ -78,9 +81,9 @@ const Chips: FC = () => {
       </cylinder>
       <cylinder
         name="25"
-        height={0.04}
-        diameter={0.2}
-        position={new Vector3(-0.12, 3.1, 4)}
+        height={height}
+        diameter={diameter}
+        position={new Vector3(-0.04, 1.04, 0.83)}
         onCreated={handleActions}
       >
         <standardMaterial
@@ -91,9 +94,9 @@ const Chips: FC = () => {
       </cylinder>
       <cylinder
         name="100"
-        height={0.04}
-        diameter={0.2}
-        position={new Vector3(-0.36, 3.1, 3.95)}
+        height={height}
+        diameter={diameter}
+        position={new Vector3(-0.12, 1.04, 0.81)}
         onCreated={handleActions}
       >
         <standardMaterial
@@ -103,11 +106,12 @@ const Chips: FC = () => {
         />
       </cylinder>
 
+      {/*special mesh for highlighting */}
       {highlighting && (
         <cylinder
           name="100"
-          height={0.02}
-          diameter={0.2}
+          height={height / 2}
+          diameter={diameter}
           position={highlighting}
         >
           <standardMaterial

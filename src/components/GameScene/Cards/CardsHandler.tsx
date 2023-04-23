@@ -37,7 +37,7 @@ export const CardsHandler: FC = observer(() => {
               value={handCard.value}
               suit={handCard.suit}
               rank={handCard.rank}
-              offset={i / 10}
+              offset={i / 30}
               position={playerSpot.position}
               rotation={playerSpot.rotation}
             />
@@ -53,7 +53,7 @@ export const CardsHandler: FC = observer(() => {
             value={card.value}
             suit={card.suit}
             rank={card.rank}
-            offset={i / 10}
+            offset={i / 30}
             position={dealerSpotPosition}
             rotation={
               dealerCards.length === 2 && i === 1

@@ -15,19 +15,19 @@ const CardsTooltip: FC<ICardsTooltip> = ({ points }) => {
   return (
     <>
       {roomState === RoomState.playing && points > 0 && (
-        <Html name="html" occlude={false}>
+        <Html name="html">
           {
             <div
               style={{
                 background: "var(--font-golden-color)",
                 borderRadius: "20px",
                 border: "1px solid black",
-                padding: "7px",
+                padding: "2.3px",
                 opacity: "0.7",
                 fontWeight: "900",
                 position: "absolute",
-                top: "70px",
-                right: "50px",
+                top: "35px",
+                right: "25px",
               }}
             >
               {points <= 21 ? points : "busted"}

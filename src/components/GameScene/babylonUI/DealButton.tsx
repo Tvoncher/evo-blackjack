@@ -1,10 +1,8 @@
-import { Vector3 } from "@babylonjs/core/Maths/math.vector";
-import { FC, useCallback, useContext, useEffect } from "react";
+import { FC, useCallback, useContext } from "react";
 import { MainStoreContext, mainStore } from "../../../stores/MainStore";
 import Chips from "../Chips/Chips";
 import { RoomState } from "../../../types/types";
 import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
 import { recalculatePoints } from "../../../utils/utils";
 import { Html } from "react-babylonjs";
 

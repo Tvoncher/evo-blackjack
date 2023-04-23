@@ -7,8 +7,7 @@ import { MainStoreContext } from "../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import DealButton from "./babylonUI/DealButton";
 import PlayerSpots from "./PlayerSpots/PlayerSpots";
-import { Room } from "./Room/Room";
-import Dealer from "./DealerModel/Dealer";
+import Dealer from "./Dealer/Dealer";
 import UI from "../UI/UI";
 import { baseCameraParams, baseLightParams } from "../../utils/consts";
 import { startGame } from "../../utils/utils";
@@ -47,9 +46,10 @@ const GameScene: FC = observer(() => {
           {/*MUST use suspense with react-babylon */}
           <Suspense>
             <Dealer />
-            <Room />
             <CardsHandler />
+            {/*to refactor deal button why is it here */}
             <DealButton />
+            {/*to refactor plSpots */}
             <PlayerSpots />
             <DealerSpot />
           </Suspense>

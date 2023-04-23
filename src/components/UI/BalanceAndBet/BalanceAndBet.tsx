@@ -2,8 +2,9 @@ import { FC, useContext } from "react";
 import { IUser } from "../../../types/types";
 import { MainStoreContext } from "../../../stores/MainStore";
 import "./BalanceAndBet.css";
+import { observer } from "mobx-react-lite";
 
-const BalanceAndBet: FC = () => {
+const BalanceAndBet: FC = observer(() => {
   const context = useContext(MainStoreContext);
   const { balance, totalBet } = context?.userStore.user as IUser;
   return (
@@ -16,6 +17,6 @@ const BalanceAndBet: FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default BalanceAndBet;

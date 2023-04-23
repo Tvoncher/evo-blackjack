@@ -99,12 +99,12 @@ const Card: FC<CardProps> = ({
       position={
         new Vector3(
           position._x - offset,
-          position._y + offset / 10,
+          position._y + offset / 6,
           position._z + offset
         )
       }
       rotation={rotation}
-      scaling={new Vector3(0.25, 0.25, 0.25)}
+      scaling={new Vector3(0.08, 0.08, 0.08)}
       onCreated={assignTexture}
       disposeInstanceOnUnmount
     />

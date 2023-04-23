@@ -58,8 +58,7 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
     if (status === PlayerSpotStatus.active && scene) {
       const camera = scene.cameras[0] as ArcRotateCamera;
 
-      camera.alpha = Math.PI / 2 + Math.sin(rotation._y / 2);
-      camera.radius = 6;
+      camera.alpha = Math.PI / 2 + Math.sin(rotation._y / 1.4);
     }
 
     return (
@@ -69,8 +68,8 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
         <cylinder
           ref={playerSpotRef}
           name={`playerSpot${index}`}
-          height={0.01}
-          diameter={0.3}
+          height={0.003}
+          diameter={0.1}
           position={position}
           isVisible={roomState === RoomState.betting}
         >
@@ -95,8 +94,8 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
           <cylinder
             key={chip + i + Date.now()}
             name={`chip${i}`}
-            height={0.04}
-            diameter={0.2}
+            height={0.01}
+            diameter={0.06}
             position={position}
             isVisible={roomState === RoomState.betting}
             disposeInstanceOnUnmount
