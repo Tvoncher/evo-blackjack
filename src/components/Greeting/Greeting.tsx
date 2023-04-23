@@ -1,26 +1,19 @@
-import { FC, useCallback, useContext } from "react";
+import { FC } from "react";
 import "./Greeting.css";
-import { MainStoreContext } from "../../stores/MainStore";
+import { useGameStart } from "../../hooks/useGameStart";
 
 interface GreetingProps {
-  setIsGameStarted: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// showing greeting screen
-const Greeting: FC<GreetingProps> = ({ setIsGameStarted }) => {
-  const context = useContext(MainStoreContext);
-  const userStore = context?.userStore;
-
-  const handleClick = useCallback(() => {
-    userStore?.userAuth();
-
-    setIsGameStarted(() => true);
-  }, []);
+// showing greeting screen and starting game
+const Greeting: FC<GreetingProps> = ({ setIsStarted }) => {
+  const handleGameStart = useGameStart(setIsStarted);
 
   return (
     <div className="greeting">
       <img src="images/logo.png" alt="logo" />
-      <button className="play-button" onClick={handleClick}>
+      <button className="play-button" onClick={handleGameStart}>
         Play
       </button>
     </div>

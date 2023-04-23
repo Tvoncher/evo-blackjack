@@ -1,6 +1,6 @@
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { FC, Suspense, useContext, useEffect } from "react";
-import { Engine, Html, Scene } from "react-babylonjs";
+import { Engine, Scene } from "react-babylonjs";
 import "./GameScene.css";
 import { startGame } from "../../utils/gameLogic";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
@@ -11,8 +11,9 @@ import DealButton from "../UI/GameControls/DealButton";
 import PlayerSpots from "./PlayerSpots/PlayerSpots";
 import { Room } from "./Room/Room";
 import Dealer from "./DealerModel/Dealer";
+import UI from "../UI/UI";
 
-// everything connected with babylonjs rendering
+// handling everything connected with babylonjs
 const GameScene: FC = observer(() => {
   const context = useContext(MainStoreContext);
   const isLoading = mainStore.roomStore.isLoading;
@@ -22,7 +23,8 @@ const GameScene: FC = observer(() => {
   }, []);
 
   return (
-    <MainStoreContext.Provider value={mainStore}>
+    <>
+      <UI />
       {isLoading && <LoadingScreen />}
       <Engine antialias adaptToDeviceRatio className="canvas">
         <Scene>
@@ -48,7 +50,7 @@ const GameScene: FC = observer(() => {
           </Suspense>
         </Scene>
       </Engine>
-    </MainStoreContext.Provider>
+    </>
   );
 });
 
