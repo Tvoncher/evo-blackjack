@@ -1,0 +1,27 @@
+.balance_bet {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+}
+
+.balance_bet__frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--font-golden-color);
+  background: linear-gradient(
+    180deg,
+    rgba(110, 94, 46, 0.20211834733893552) 0%,
+    rgba(0, 0, 0, 0.2) 60%
+  );
+  padding: 5%;
+  border-radius: 50px;
+  color: white;
+  min-width: 150px;
+}
+
+.balance_bet__text_golden {
+  color: var(--font-golden-color);
+}

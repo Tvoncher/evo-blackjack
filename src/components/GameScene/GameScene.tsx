@@ -7,7 +7,7 @@ import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { CardsHandler } from "./Cards/CardsHandler";
 import { MainStoreContext, mainStore } from "../../stores/MainStore";
 import { observer } from "mobx-react-lite";
-import DealButton from "../UI/GameControls/DealButton";
+import DealButton from "./babylonUI/DealButton";
 import PlayerSpots from "./PlayerSpots/PlayerSpots";
 import { Room } from "./Room/Room";
 import Dealer from "./DealerModel/Dealer";

@@ -7,10 +7,7 @@ import Card from "./Card";
 import { observer } from "mobx-react-lite";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
-import { Vector3 } from "@babylonjs/core/Maths/math.vector";
-import { toJS, when } from "mobx";
-import CardsTooltip from "../../UI/CardsTooltip";
-import DealerSpot from "../../UI/DealerSpot";
+import DealerSpot from "../DealerSpot/DealerSpot";
 
 //displaying cards
 

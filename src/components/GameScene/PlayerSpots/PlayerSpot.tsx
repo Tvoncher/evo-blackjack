@@ -8,7 +8,7 @@ import { observer } from "mobx-react-lite";
 import { PlayerSpotStatus, RoomState } from "../../../types/types";
 import { checkPoints, findActiveSpot } from "../../../utils/gameLogic";
 import { recalculatePoints } from "../../../utils/utils";
-import CardsTooltip from "../../UI/CardsTooltip";
+import CardsTooltip from "../babylonUI/CardsTooltip";
 import Buttons from "./Buttons";
 
 interface IPlayerSpotProps {

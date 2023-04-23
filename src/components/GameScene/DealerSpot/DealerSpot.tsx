@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { mainStore } from "../../stores/MainStore";
-import CardsTooltip from "./CardsTooltip";
+import { mainStore } from "../../../stores/MainStore";
+import CardsTooltip from "../babylonUI/CardsTooltip";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
-import { RoomState } from "../../types/types";
-import Card from "../GameScene/Cards/Card";
+import { RoomState } from "../../../types/types";
+import Card from "../Cards/Card";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
 
 interface IDealerSpot {

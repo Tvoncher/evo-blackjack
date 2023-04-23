@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
-import { mainStore } from "../../stores/MainStore";
-import { RoomState } from "../../types/types";
+import { mainStore } from "../../../stores/MainStore";
+import { RoomState } from "../../../types/types";
 import { Html } from "react-babylonjs";
 
 interface ICardsTooltip {

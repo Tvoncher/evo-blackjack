@@ -1,7 +1,7 @@
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { FC, useCallback, useContext, useEffect } from "react";
 import { MainStoreContext, mainStore } from "../../../stores/MainStore";
-import Chips from "../../GameScene/Chips/Chips";
+import Chips from "../Chips/Chips";
 import { RoomState } from "../../../types/types";
 import { observer } from "mobx-react-lite";
 import { toJS } from "mobx";
@@ -14,6 +14,7 @@ const DealButton: FC = observer(() => {
 
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
   const roomStore = mainStore.roomStore;
+  const totalBet = mainStore.userStore.user.totalBet;
 
   const roomState = mainStore.roomStore.roomState;
   //TODO: context null
@@ -46,7 +47,7 @@ const DealButton: FC = observer(() => {
     <>
       {roomState === RoomState.betting && <Chips />}
 
-      {roomState === RoomState.betting && (
+      {roomState === RoomState.betting && totalBet > 0 && (
         <Html name="buttons" center>
           <div className="ui-container">
             <div className="button-container" onClick={handleDeal}>
