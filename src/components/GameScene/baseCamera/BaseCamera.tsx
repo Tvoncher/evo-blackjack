@@ -1,21 +1,23 @@
-import { FC, Ref, useRef } from "react";
+import { FC } from "react";
 import { baseCameraParams } from "../../../utils/consts";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { observer } from "mobx-react-lite";
+import { useScene } from "react-babylonjs";
+import { resetCameraAngles } from "../../../utils/BaseCamera";
 
 const BaseCamera: FC = observer(() => {
   const { alpha, beta, radius, target, minZ } = baseCameraParams;
-  const camera: Ref<ArcRotateCamera> | null = useRef(null);
 
-  // reseting camera angles at the end
   const roomState = mainStore.roomStore.roomState;
+  const scene = useScene();
+  const camera = scene!.cameras[0] as ArcRotateCamera;
+
+  //moving back to initial angles
   if (roomState === RoomState.ending) {
-    if (camera.current) {
-      camera.current.radius = radius;
-      camera.current.alpha = alpha;
-      camera.current.beta = beta;
+    if (camera) {
+      resetCameraAngles(camera, radius, alpha, beta);
     }
   }
 
@@ -27,7 +29,6 @@ const BaseCamera: FC = observer(() => {
       beta={beta}
       radius={radius}
       minZ={minZ}
-      ref={camera}
     />
   );
 });
