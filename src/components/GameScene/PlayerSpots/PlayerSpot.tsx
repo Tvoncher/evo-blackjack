@@ -13,6 +13,7 @@ import { usePlayerSpotCamera } from "../../../hooks/usePlayerSpotCamera";
 import PlayerSpotChip from "./PlayerSpotChip";
 import PlayerSpotMaterial from "./PlayerSpotMaterial";
 import { playerSpotDiameter, playerSpotHeight } from "../../../utils/consts";
+import { placeBetOnPlayerSpot } from "../../../utils/utils";
 
 const PlayerSpot: FC<IPlayerSpotProps> = observer(
   ({ points, position, rotation, status, index }) => {
@@ -20,14 +21,11 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
     const roomState = mainStore.roomStore.roomState;
     const playerSpotRef = useRef(null);
 
+    //adding chips on spot
     useClick(() => {
       const selectedBet = mainStore.userStore.user.selectedChip;
       if (selectedBet > 0) {
-        //setting totalBet (displayed on bottom)
-        mainStore.userStore.addToTotalBet(selectedBet);
-
-        //placing bet for this playerSpot
-        mainStore.playerSpotsStore.placeBet(index, selectedBet);
+        placeBetOnPlayerSpot(index, selectedBet);
 
         //need it to render chips on playerSpot
         setPlayerSpotChip(() => [...playerSpotChips, selectedBet]);

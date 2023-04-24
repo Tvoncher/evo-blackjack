@@ -16,8 +16,6 @@ export const CardsHandler: FC = observer(() => {
   const assetManagerResult = useAssetManager(assetsTask);
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);
   const dealerCards = mainStore.roomStore.dealerCards;
-
-  //TODO: getting playerSpots from context. Each player spot is responsible for hand and bet
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
 
   useEffect(() => {

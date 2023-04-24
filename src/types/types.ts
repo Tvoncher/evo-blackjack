@@ -1,4 +1,5 @@
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
+import { Mesh } from "@babylonjs/core/Meshes/mesh";
 
 export interface IUser {
   balance: number;
@@ -68,6 +69,16 @@ export interface IBaseCameraParams {
 export interface IPlayerSpotChipProps {
   chip: number;
   position: Vector3;
+}
+
+export interface ICardProps {
+  card: Mesh;
+  value: number;
+  offset: number;
+  rank: string | number;
+  suit: Suit | string;
+  position: Vector3;
+  rotation: Vector3;
 }
 
 export interface IBaseLightParams {

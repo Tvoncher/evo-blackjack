@@ -6,7 +6,6 @@ import {
   IPlayerSpotsPositions,
 } from "../types/types";
 import { Color3 } from "@babylonjs/core/Maths/math";
-import { Texture } from "@babylonjs/core/Materials/Textures/texture";
 
 export const startingBalance: number = 1000;
 
@@ -55,9 +54,16 @@ export const chipsArray: IChipProps[] = [
   },
 ];
 
+export const cardScaling: Vector3 = new Vector3(0.08, 0.08, 0.08);
+
 export const playerSpotHeight: number = 0.003;
 export const playerSpotDiameter: number = 0.1;
 
 export const chipHighlighting: Color3 = new Color3(0.7, 0.5, 0);
 
 export const neonColor: Color3 = new Color3(0, 0.7, 1);
+
+const cardsSpritesheetWidth = 13;
+const cardsSpritesheetHeight = 4;
+export const cardSpriteWidth = 1 / cardsSpritesheetWidth;
+export const cardSpriteHeight = 1 / cardsSpritesheetHeight;
