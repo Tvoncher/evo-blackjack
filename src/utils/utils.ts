@@ -7,6 +7,8 @@ import {
   RoomState,
 } from "../types/types";
 import { startingBalance } from "./consts";
+import { AnimationGroup } from "@babylonjs/core/Animations/animationGroup";
+import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
 
 export const shuffleDeck = () => {
   let shuffledDeck = [...initialDeck];
@@ -50,6 +52,10 @@ export const startGame = () => {
     //changing room state to awaiting bets
     mainStore.roomStore.setRoomState(RoomState.betting);
   }, 1000);
+};
+
+export const runAnim = (animation: AnimationGroup) => {
+  animation.play();
 };
 
 export const initialDeck = [

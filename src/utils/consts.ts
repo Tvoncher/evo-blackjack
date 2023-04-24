@@ -4,6 +4,7 @@ import {
   IBaseLightParams,
   IPlayerSpotsPositions,
 } from "../types/types";
+import { Color3 } from "@babylonjs/core/Maths/math";
 
 export const startingBalance: number = 1000;
 
@@ -12,6 +13,7 @@ export const baseCameraParams: IBaseCameraParams = {
   beta: Math.PI / 2.6,
   radius: 1.9,
   target: new Vector3(0, 1, 0),
+  minZ: 0,
 };
 
 export const baseLightParams: IBaseLightParams = {
@@ -28,3 +30,5 @@ export const playerSpotsPositions: IPlayerSpotsPositions = {
 };
 
 export const dealerSpotPosition: Vector3 = new Vector3(0, 1.05, 0.3);
+
+export const neonColor: Color3 = new Color3(0, 0.7, 1);

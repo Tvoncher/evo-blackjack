@@ -9,16 +9,17 @@ import DealButton from "./babylonUI/DealButton";
 import PlayerSpots from "./PlayerSpots/PlayerSpots";
 import Dealer from "./Dealer/Dealer";
 import UI from "../UI/UI";
-import { baseCameraParams, baseLightParams } from "../../utils/consts";
+import { baseLightParams } from "../../utils/consts";
 import { startGame } from "../../utils/utils";
 import DealerSpot from "./DealerSpot/DealerSpot";
+import BaseCamera from "./baseCamera/BaseCamera";
+import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 
 // handling everything connected with babylonjs
 const GameScene: FC = observer(() => {
   const context = useContext(MainStoreContext);
   const isLoading = context?.roomStore.isLoading;
 
-  const { alpha, beta, radius, target } = baseCameraParams;
   const { intensity, direction } = baseLightParams;
 
   useEffect(() => {
@@ -31,15 +32,9 @@ const GameScene: FC = observer(() => {
       {isLoading && <LoadingScreen />}
       <Engine antialias adaptToDeviceRatio className="canvas">
         <Scene>
-          <arcRotateCamera
-            name="camera1"
-            target={target}
-            alpha={alpha}
-            beta={beta}
-            radius={radius}
-          />
+          <BaseCamera />
           <hemisphericLight
-            name="light1"
+            name="light__main"
             intensity={intensity}
             direction={direction}
           />

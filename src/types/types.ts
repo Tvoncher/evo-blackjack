@@ -62,6 +62,7 @@ export interface IBaseCameraParams {
   beta: number;
   radius: number;
   target: Vector3;
+  minZ: number;
 }
 
 export interface IBaseLightParams {
