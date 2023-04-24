@@ -8,7 +8,7 @@ import { runAnim } from "../utils/utils";
 import { RoomState } from "../types/types";
 
 //handling dealer animations
-export const useDealer = () => {
+export const useDealerAnimations = () => {
   //built-in hook for getting asset manager result
   const assetManagerResult = useAssetManager(assetsTask);
   const roomState = mainStore.roomStore.roomState;

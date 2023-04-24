@@ -2,13 +2,14 @@ import { FC, useEffect } from "react";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { mainStore } from "../../../stores/MainStore";
 import { neonColor } from "../../../utils/consts";
-import { useDealer } from "../../../hooks/useDealer";
+import { useDealerAnimations } from "../../../hooks/useDealerAnimations";
 import { observer } from "mobx-react-lite";
 import { useGreeting } from "../../../hooks/useGreeting";
 
+//showing dealer animations and table (only because of my poor modelling skills)
 const Dealer: FC = observer(() => {
   useGreeting();
-  useDealer();
+  useDealerAnimations();
 
   // hiding loading screen when mounted (=== loaded)
   useEffect(() => {
