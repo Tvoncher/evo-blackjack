@@ -1,21 +1,16 @@
-import { FC, useCallback, useContext } from "react";
-import { MainStoreContext, mainStore } from "../../../stores/MainStore";
-import Chips from "../Chips/Chips";
+import { FC, useCallback } from "react";
+import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { observer } from "mobx-react-lite";
 import { recalculatePoints } from "../../../utils/utils";
 import { Html } from "react-babylonjs";
 
-//TODO: rewrite,delete,export somewhere else etc
 const DealButton: FC = observer(() => {
-  const context = useContext(MainStoreContext);
-
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
   const roomStore = mainStore.roomStore;
   const totalBet = mainStore.userStore.user.totalBet;
 
   const roomState = mainStore.roomStore.roomState;
-  //TODO: context null
 
   const handleDeal = useCallback(() => {
     if (mainStore.userStore.user.totalBet > 0) {
@@ -31,20 +26,13 @@ const DealButton: FC = observer(() => {
           }
 
           mainStore.roomStore.setRoomState(RoomState.playing);
-          //when state === playing => set active player spots
-          //work only with active once
-          //like playeSpot[0] === active
-          //if clicked on stand - set inactive,move to next player spot,until noone left
         });
       }, 700);
-      //TODO: rewrite later
     }
   }, []);
 
   return (
     <>
-      {roomState === RoomState.betting && <Chips />}
-
       {roomState === RoomState.betting && totalBet > 0 && (
         <Html name="buttons" center>
           <div className="ui-container">

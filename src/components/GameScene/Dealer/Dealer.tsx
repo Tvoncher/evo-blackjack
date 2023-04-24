@@ -4,11 +4,11 @@ import { mainStore } from "../../../stores/MainStore";
 import { neonColor } from "../../../utils/consts";
 import { useDealerAnimations } from "../../../hooks/useDealerAnimations";
 import { observer } from "mobx-react-lite";
-import { useGreeting } from "../../../hooks/useGreeting";
+import { useGreetingAnimation } from "../../../hooks/useGreetingAnimation";
 
 //showing dealer animations and table (only because of my poor modelling skills)
 const Dealer: FC = observer(() => {
-  useGreeting();
+  useGreetingAnimation();
   useDealerAnimations();
 
   // hiding loading screen when mounted (=== loaded)

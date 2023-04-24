@@ -65,7 +65,25 @@ export interface IBaseCameraParams {
   minZ: number;
 }
 
+export interface IPlayerSpotChipProps {
+  chip: number;
+  position: Vector3;
+}
+
 export interface IBaseLightParams {
   intensity: number;
   direction: Vector3;
+}
+
+export interface IChipProps {
+  name: string;
+  position: Vector3;
+}
+
+export interface IPlayerSpotProps {
+  points: number;
+  position: Vector3;
+  rotation: Vector3;
+  index: number;
+  status: PlayerSpotStatus;
 }

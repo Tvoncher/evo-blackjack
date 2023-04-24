@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { mainStore } from "../../../stores/MainStore";
-import CardsTooltip from "../babylonUI/CardsTooltip";
+import CardsTooltip from "../BabylonUI/CardsTooltip";
 import { dealerSpotPosition } from "../../../utils/consts";
 import { observer } from "mobx-react-lite";
 

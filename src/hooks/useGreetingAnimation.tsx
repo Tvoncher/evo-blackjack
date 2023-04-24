@@ -5,7 +5,7 @@ import { AnimationGroup } from "@babylonjs/core/Animations/animationGroup";
 import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
 
 //handling greating animation on initial render
-export const useGreeting = () => {
+export const useGreetingAnimation = () => {
   //built-in hook for getting asset manager result
   const assetManagerResult = useAssetManager(assetsTask);
 

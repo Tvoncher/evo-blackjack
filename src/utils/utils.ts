@@ -9,6 +9,10 @@ import {
 import { startingBalance } from "./consts";
 import { AnimationGroup } from "@babylonjs/core/Animations/animationGroup";
 import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
+import { Mesh } from "@babylonjs/core/Meshes/mesh";
+import { ActionManager } from "@babylonjs/core/Actions/actionManager";
+import { ExecuteCodeAction } from "@babylonjs/core/Actions/directActions";
+import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 
 export const shuffleDeck = () => {
   let shuffledDeck = [...initialDeck];
@@ -56,6 +60,36 @@ export const startGame = () => {
 
 export const runAnim = (animation: AnimationGroup) => {
   animation.play();
+};
+
+export const registerChipActions = (chip: Mesh) => {
+  chip.actionManager = new ActionManager(chip.getScene());
+  chip.actionManager.registerAction(
+    new ExecuteCodeAction(ActionManager.OnPickTrigger, function () {
+      chip.scaling = new Vector3(1, 1, 1);
+      mainStore.userStore.setselectedChip(+chip.name);
+    })
+  );
+
+  //setting like onHover / onMouseOver
+  chip.actionManager.registerAction(
+    new ExecuteCodeAction(ActionManager.OnPointerOverTrigger, function () {
+      chip.scaling = new Vector3(1.1, 1.1, 1.1);
+    })
+  );
+  //on mouseOut
+  chip.actionManager.registerAction(
+    new ExecuteCodeAction(ActionManager.OnPointerOutTrigger, function () {
+      chip.scaling = new Vector3(1, 1, 1);
+    })
+  );
+};
+
+export const deactivatePlayerSpot = (index: number) => {
+  mainStore.playerSpotsStore.setPlayerSpotStatus(
+    index,
+    PlayerSpotStatus.inactive
+  );
 };
 
 export const initialDeck = [

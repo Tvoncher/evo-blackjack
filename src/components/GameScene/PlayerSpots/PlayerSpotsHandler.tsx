@@ -3,8 +3,7 @@ import PlayerSpot from "./PlayerSpot";
 import { mainStore } from "../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 
-//nahdling playerSpots
-const PlayerSpots: FC = observer(() => {
+const PlayerSpotsHandler: FC = observer(() => {
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
 
   return (
@@ -16,4 +15,4 @@ const PlayerSpots: FC = observer(() => {
   );
 });
 
-export default PlayerSpots;
+export default PlayerSpotsHandler;

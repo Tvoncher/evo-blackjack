@@ -5,8 +5,7 @@ import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { CardsHandler } from "./Cards/CardsHandler";
 import { MainStoreContext } from "../../stores/MainStore";
 import { observer } from "mobx-react-lite";
-import DealButton from "./babylonUI/DealButton";
-import PlayerSpots from "./PlayerSpots/PlayerSpots";
+import PlayerSpotsHandler from "./PlayerSpots/PlayerSpotsHandler";
 import Dealer from "./Dealer/Dealer";
 import UI from "../UI/UI";
 import { baseLightParams } from "../../utils/consts";
@@ -14,6 +13,7 @@ import { startGame } from "../../utils/utils";
 import DealerSpot from "./DealerSpot/DealerSpot";
 import BaseCamera from "./baseCamera/BaseCamera";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
+import BabylonUI from "./BabylonUI/BabylonUI";
 
 // handling everything connected with babylonjs
 const GameScene: FC = observer(() => {
@@ -38,14 +38,12 @@ const GameScene: FC = observer(() => {
             intensity={intensity}
             direction={direction}
           />
-          {/*MUST use suspense with react-babylon */}
+          {/*must use suspense with react-babylon */}
           <Suspense>
             <Dealer />
+            <BabylonUI />
             <CardsHandler />
-            {/*to refactor deal button why is it here */}
-            <DealButton />
-            {/*to refactor plSpots */}
-            <PlayerSpots />
+            <PlayerSpotsHandler />
             <DealerSpot />
           </Suspense>
         </Scene>
