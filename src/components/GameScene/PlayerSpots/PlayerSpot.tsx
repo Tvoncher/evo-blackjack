@@ -58,7 +58,7 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
     if (status === PlayerSpotStatus.active && scene) {
       const camera = scene.cameras[0] as ArcRotateCamera;
 
-      camera.alpha = Math.PI / 2 + Math.sin(rotation._y / 1.4);
+      camera.alpha = Math.PI / 2 + Math.sin(-rotation._y / 1.4);
       camera.beta = Math.PI / 2.8;
       camera.radius = 1.7;
     }
