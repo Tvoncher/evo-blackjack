@@ -2,9 +2,9 @@ import { Mesh, Texture } from "@babylonjs/core";
 import { FC, useCallback } from "react";
 import { IChipProps } from "../../../../types/types";
 import {
-  chipDiameter,
-  chipHeight,
-  chipHighlighting,
+  CHIP_DIAMETER,
+  CHIP_HEIGHT,
+  CHIP_HIGHLIGHTING_COLOR,
 } from "../../../../utils/consts";
 import { mainStore } from "../../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
@@ -12,8 +12,8 @@ import { registerChipActions } from "../../../../utils/utils";
 
 // rendering chip and highlighting it
 const Chip: FC<IChipProps> = observer(({ name, position }) => {
-  const diffuseTexture: Texture = new Texture(`textures/chip${name}.png`);
-  const bumpTexture: Texture = new Texture("textures/bumpTexture.png");
+  const diffuseTexture: Texture = new Texture(`textures/chips/chip${name}.png`);
+  const bumpTexture: Texture = new Texture("textures/chips/bumpTexture.png");
 
   const selectedChip = mainStore.userStore.user.selectedChip;
 
@@ -27,8 +27,8 @@ const Chip: FC<IChipProps> = observer(({ name, position }) => {
       {/*chip itself */}
       <cylinder
         name={name}
-        height={chipHeight}
-        diameter={chipDiameter}
+        height={CHIP_HEIGHT}
+        diameter={CHIP_DIAMETER}
         position={position}
         onCreated={handleActions}
       >
@@ -43,13 +43,13 @@ const Chip: FC<IChipProps> = observer(({ name, position }) => {
       {selectedChip === +name && (
         <cylinder
           name="highlighting__mesh"
-          height={chipHeight / 2}
-          diameter={chipDiameter}
+          height={CHIP_HEIGHT / 2}
+          diameter={CHIP_DIAMETER}
           position={position}
         >
           <standardMaterial
             name="highlighting__material"
-            emissiveColor={chipHighlighting}
+            emissiveColor={CHIP_HIGHLIGHTING_COLOR}
           />
         </cylinder>
       )}

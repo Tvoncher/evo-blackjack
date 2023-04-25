@@ -8,7 +8,7 @@ import { observer } from "mobx-react-lite";
 import PlayerSpotsHandler from "./PlayerSpots/PlayerSpotsHandler";
 import Dealer from "./Dealer/Dealer";
 import UI from "../UI/UI";
-import { baseLightParams } from "../../utils/consts";
+import { BASE_LIGHT_PARAMS } from "../../utils/consts";
 import { startGame } from "../../utils/utils";
 import DealerSpot from "./DealerSpot/DealerSpot";
 import BaseCamera from "./baseCamera/BaseCamera";
@@ -20,7 +20,7 @@ const GameScene: FC = observer(() => {
   const context = useContext(MainStoreContext);
   const isLoading = context?.roomStore.isLoading;
 
-  const { intensity, direction } = baseLightParams;
+  const { intensity, direction } = BASE_LIGHT_PARAMS;
 
   useEffect(() => {
     startGame();
@@ -38,7 +38,7 @@ const GameScene: FC = observer(() => {
             intensity={intensity}
             direction={direction}
           />
-          {/*must use suspense with react-babylon */}
+          {/* must use suspense with react-babylon */}
           <Suspense>
             <Dealer />
             <BabylonUI />

@@ -3,8 +3,8 @@ import PlayerSpot from "./PlayerSpot";
 import { mainStore } from "../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import {
-  playerSpotsRotation,
-  playerSpotsPositions,
+  PLAYER_SPOTS_ROTATION,
+  PLAYER_SPOTS_POSITIONS,
 } from "../../../utils/consts";
 
 const PlayerSpotsHandler: FC = observer(() => {
@@ -15,8 +15,8 @@ const PlayerSpotsHandler: FC = observer(() => {
       {playerSpots.map((playerSpot) => (
         <PlayerSpot
           key={playerSpot.index}
-          position={playerSpotsPositions[playerSpot.index]}
-          rotation={playerSpotsRotation[playerSpot.index]}
+          position={PLAYER_SPOTS_POSITIONS[playerSpot.index]}
+          rotation={PLAYER_SPOTS_ROTATION[playerSpot.index]}
           {...playerSpot}
         />
       ))}

@@ -6,12 +6,11 @@ import { useAssetManager } from "react-babylonjs";
 import Card from "./Card";
 import { observer } from "mobx-react-lite";
 import { mainStore } from "../../../stores/MainStore";
-import { RoomState } from "../../../types/types";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import {
-  dealerSpotPosition,
-  playerSpotsPositions,
-  playerSpotsRotation,
+  DEALER_SPOT_POSITION,
+  PLAYER_SPOTS_POSITIONS,
+  PLAYER_SPOTS_ROTATION,
 } from "../../../utils/consts";
 
 //displaying cards
@@ -39,8 +38,8 @@ export const CardsHandler: FC = observer(() => {
             suit={handCard.suit}
             rank={handCard.rank}
             offset={i / 30}
-            position={playerSpotsPositions[spotIndex]}
-            rotation={playerSpotsRotation[spotIndex]}
+            position={PLAYER_SPOTS_POSITIONS[spotIndex]}
+            rotation={PLAYER_SPOTS_ROTATION[spotIndex]}
           />
         ))
       )}
@@ -54,7 +53,7 @@ export const CardsHandler: FC = observer(() => {
           suit={card.suit}
           rank={card.rank}
           offset={i / 30}
-          position={dealerSpotPosition}
+          position={DEALER_SPOT_POSITION}
           rotation={
             dealerCards.length === 2 && i === 1
               ? new Vector3(0, 0, Math.PI)

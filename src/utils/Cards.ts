@@ -1,6 +1,6 @@
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
 import { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh";
-import { cardSpriteHeight, cardSpriteWidth } from "./consts";
+import { CARD_SPRITE_HEIGHT, CARD_SPRITE_WIDTH } from "./consts";
 import { Texture } from "@babylonjs/core/Materials/Textures/texture";
 import { Suit } from "../types/types";
 
@@ -14,8 +14,8 @@ export const getCardMaterial = (
     "textures/cardsSpritesheet.jpg"
   );
 
-  cardFrontTexture.uScale = cardSpriteWidth;
-  cardFrontTexture.vScale = cardSpriteHeight;
+  cardFrontTexture.uScale = CARD_SPRITE_WIDTH;
+  cardFrontTexture.vScale = CARD_SPRITE_HEIGHT;
 
   //we need it to access proper sprites row
   let suitRow: number = 0;
@@ -63,8 +63,8 @@ export const getCardMaterial = (
       cardColPos = +rank;
   }
 
-  cardFrontTexture.uOffset = cardColPos * cardSpriteWidth - cardSpriteWidth;
-  cardFrontTexture.vOffset = suitRow * cardSpriteHeight;
+  cardFrontTexture.uOffset = cardColPos * CARD_SPRITE_WIDTH - CARD_SPRITE_WIDTH;
+  cardFrontTexture.vOffset = suitRow * CARD_SPRITE_HEIGHT;
 
   const cardBumpTexture: Texture = new Texture("textures/cardBump.png");
 

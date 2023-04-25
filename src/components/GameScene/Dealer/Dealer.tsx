@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { mainStore } from "../../../stores/MainStore";
-import { neonColor } from "../../../utils/consts";
+import { NEON_COLOR } from "../../../utils/consts";
 import { useDealerAnimations } from "../../../hooks/useDealerAnimations";
 import { observer } from "mobx-react-lite";
 import { useGreetingAnimation } from "../../../hooks/useGreetingAnimation";
@@ -26,12 +26,12 @@ const Dealer: FC = observer(() => {
         depth={0.005}
         position={new Vector3(0, 1.05, 0.2)}
       >
-        <standardMaterial name="glowing__material" emissiveColor={neonColor} />
+        <standardMaterial name="glowing__material" emissiveColor={NEON_COLOR} />
       </box>
       <pointLight
         name="floor__light"
         position={new Vector3(0, 0.8, 1)}
-        diffuse={neonColor}
+        diffuse={NEON_COLOR}
       />
     </>
   );

@@ -12,7 +12,10 @@ import HitNStandButtons from "../BabylonUI/HitNStandButtons/HitNStandButtons";
 import { usePlayerSpotCamera } from "../../../hooks/usePlayerSpotCamera";
 import PlayerSpotChip from "./PlayerSpotChip";
 import PlayerSpotMaterial from "./PlayerSpotMaterial";
-import { playerSpotDiameter, playerSpotHeight } from "../../../utils/consts";
+import {
+  PLAYER_SPOT_DIAMETER,
+  PLAYER_SPOT_HEIGHT,
+} from "../../../utils/consts";
 import { placeBetOnPlayerSpot } from "../../../utils/playerSpot";
 
 const PlayerSpot: FC<IPlayerSpotProps> = observer(
@@ -49,8 +52,8 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
         <cylinder
           ref={playerSpotRef}
           name={`playerSpot${index}`}
-          height={playerSpotHeight}
-          diameter={playerSpotDiameter}
+          height={PLAYER_SPOT_HEIGHT}
+          diameter={PLAYER_SPOT_DIAMETER}
           position={position}
           isVisible={roomState === RoomState.betting}
         >

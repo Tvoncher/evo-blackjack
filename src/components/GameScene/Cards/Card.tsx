@@ -2,7 +2,7 @@ import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh";
 import { FC, useCallback } from "react";
 import { ICardProps } from "../../../types/types";
-import { cardScaling } from "../../../utils/consts";
+import { CARD_SCALING } from "../../../utils/consts";
 import { getCardMaterial } from "../../../utils/cards";
 
 //creating card model from base mesh
@@ -18,7 +18,7 @@ const Card: FC<ICardProps> = ({
     getCardMaterial(card, suit, rank);
   }, []);
 
-  /* can't create instanced mesh from my glb*/
+  // can't create instanced mesh from my glb
   return (
     <mesh
       name="card"
@@ -31,7 +31,7 @@ const Card: FC<ICardProps> = ({
         )
       }
       rotation={rotation}
-      scaling={cardScaling}
+      scaling={CARD_SCALING}
       onCreated={assignTexture}
       disposeInstanceOnUnmount
     />

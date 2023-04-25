@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { baseCameraParams } from "../../../utils/consts";
+import { BASE_CAMERA_PARAMS } from "../../../utils/consts";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
@@ -8,7 +8,7 @@ import { useScene } from "react-babylonjs";
 import { resetCameraAngles } from "../../../utils/baseCamera";
 
 const BaseCamera: FC = observer(() => {
-  const { alpha, beta, radius, target, minZ } = baseCameraParams;
+  const { alpha, beta, radius, target, minZ } = BASE_CAMERA_PARAMS;
 
   const roomState = mainStore.roomStore.roomState;
   const scene = useScene();

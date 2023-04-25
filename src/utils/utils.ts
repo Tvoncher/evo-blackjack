@@ -1,6 +1,6 @@
 import { mainStore } from "../stores/MainStore";
 import { IUser, RoomState } from "../types/types";
-import { startingBalance } from "./consts";
+import { STARTING_BALANCE } from "./consts";
 import { AnimationGroup } from "@babylonjs/core/Animations/animationGroup";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { ActionManager } from "@babylonjs/core/Actions/actionManager";
@@ -21,7 +21,7 @@ export const shuffleDeck = () => {
 
 export const createNewUser = () => {
   const newUser: IUser = {
-    balance: startingBalance,
+    balance: STARTING_BALANCE,
     selectedChip: 0,
     totalBet: 0,
     username: RandomUsername,
