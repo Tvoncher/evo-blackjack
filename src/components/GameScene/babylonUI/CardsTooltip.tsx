@@ -12,6 +12,7 @@ interface ICardsTooltip {
 const CardsTooltip: FC<ICardsTooltip> = ({ points }) => {
   const roomState = mainStore.roomStore.roomState;
   const dealerPoints = mainStore.roomStore.dealerPoints;
+
   return (
     <>
       {roomState === RoomState.playing && points > 0 && (

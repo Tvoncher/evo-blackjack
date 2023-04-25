@@ -1,4 +1,4 @@
-.ui-container {
+.ui {
   top: -60vh;
   width: 100%;
   height: 100%;
@@ -14,11 +14,11 @@
   white-space: nowrap;
 }
 
-.buttons-container {
+.buttons__container {
   display: flex;
 }
 
-.button-container {
+.button__container {
   cursor: pointer;
   width: 75px;
   height: 40px;
@@ -27,7 +27,7 @@
   position: relative;
   margin: 10px 20px;
 }
-.button-container::before {
+.button__container::before {
   content: "";
   position: absolute;
   z-index: 1;

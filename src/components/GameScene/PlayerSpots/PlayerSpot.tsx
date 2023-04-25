@@ -2,13 +2,8 @@ import { FC, useEffect, useRef, useState } from "react";
 import { useClick } from "react-babylonjs";
 import { mainStore } from "../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
-import {
-  IPlayerSpotProps,
-  PlayerSpotStatus,
-  RoomState,
-} from "../../../types/types";
+import { IPlayerSpotProps, RoomState } from "../../../types/types";
 import CardsTooltip from "../BabylonUI/CardsTooltip";
-import HitNStandButtons from "../BabylonUI/HitNStandButtons/HitNStandButtons";
 import { usePlayerSpotCamera } from "../../../hooks/usePlayerSpotCamera";
 import PlayerSpotChip from "./PlayerSpotChip";
 import PlayerSpotMaterial from "./PlayerSpotMaterial";

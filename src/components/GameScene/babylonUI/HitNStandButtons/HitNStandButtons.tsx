@@ -31,17 +31,17 @@ const HitNStandButtons: FC = observer(() => {
     <>
       {roomState === RoomState.playing && (
         <Html name="buttons" center>
-          <div className="ui-container">
+          <div className="ui">
             <div className="title text">
               <h3>MAKE YOUR DECISION</h3>
             </div>
-            <div className="buttons-container">
-              <div className="button-container" onClick={handleHit}>
+            <div className="buttons__container">
+              <div className="button__container" onClick={handleHit}>
                 <div className="button hit">
                   <p className="text">HIT</p>
                 </div>
               </div>
-              <div className="button-container" onClick={handleStand}>
+              <div className="button__container" onClick={handleStand}>
                 <div className="button stand">
                   <p className="text">STAND</p>
                 </div>
