@@ -3,7 +3,7 @@ import { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh";
 import { FC, useCallback } from "react";
 import { ICardProps } from "../../../types/types";
 import { cardScaling } from "../../../utils/consts";
-import { getCardMaterial } from "../../../utils/Cards";
+import { getCardMaterial } from "../../../utils/cards";
 
 //creating card model from base mesh
 const Card: FC<ICardProps> = ({

@@ -11,6 +11,7 @@ import { ICard, RoomState } from "../types/types";
 import { shuffleDeck } from "../utils/utils";
 
 import { clearEverything, findActiveSpot } from "../utils/gameLogic";
+import { mainStore } from "./MainStore";
 
 configure({ enforceActions: "observed" });
 
@@ -37,33 +38,37 @@ export class RoomStore {
   public constructor() {
     makeObservable(this);
 
-    //TODO: rewrite with case-switch. maybe export somewhere
     this.disposeReaction = reaction(
       () => this.roomState,
       (newState) => {
-        if (newState === RoomState.dealing) {
-          //play dealing animation
-          //deal cards
-          //TODO:rewrite as actions and separate function
-          //userStore.user.cards = this.takeCards(2);
-          this.dealerCards = this.takeCards(2);
+        switch (newState) {
+          case RoomState.dealing:
+            this.dealerCards = this.takeCards(2);
+            setTimeout(() => {
+              this.setRoomState(RoomState.playing);
+            }, 1700);
+            break;
 
-          setTimeout(() => {
-            this.setRoomState(RoomState.playing);
-          }, 1700);
-        } else if (newState === RoomState.playing) {
-          setTimeout(() => {
-            findActiveSpot();
-          }, 1000);
-        } else if (newState === RoomState.ending) {
-          setTimeout(() => {
-            clearEverything();
-            this.setRoomState(RoomState.waiting);
-          }, 2000);
-        } else if (newState === RoomState.waiting) {
-          setTimeout(() => {
-            this.setRoomState(RoomState.betting);
-          }, 1000);
+          case RoomState.playing:
+            setTimeout(() => {
+              findActiveSpot();
+            }, 1000);
+            break;
+
+          case RoomState.ending:
+            mainStore.playerSpotsStore.calculateTotalWin();
+            mainStore.userStore.setBalance();
+            setTimeout(() => {
+              clearEverything();
+              this.setRoomState(RoomState.waiting);
+            }, 3500);
+            break;
+
+          case RoomState.waiting:
+            setTimeout(() => {
+              this.setRoomState(RoomState.betting);
+            }, 1000);
+            break;
         }
       }
     );

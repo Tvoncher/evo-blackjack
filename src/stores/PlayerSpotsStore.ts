@@ -1,7 +1,6 @@
-import { action, configure, makeObservable, observable, toJS } from "mobx";
+import { action, configure, makeObservable, observable } from "mobx";
 import { IPlayerSpot, PlayerSpotStatus } from "../types/types";
-import { Vector3 } from "@babylonjs/core/Maths/math.vector";
-import { playerSpotsPositions } from "../utils/consts";
+import { mainStore } from "./MainStore";
 
 configure({ enforceActions: "observed" });
 
@@ -16,6 +15,7 @@ export class PlayerSpotsStore {
       index: 0,
       points: 0,
       previousBet: 0,
+      roundResult: 0,
     },
     {
       hand: [],
@@ -24,6 +24,7 @@ export class PlayerSpotsStore {
       index: 1,
       points: 0,
       previousBet: 0,
+      roundResult: 0,
     },
     {
       hand: [],
@@ -33,6 +34,7 @@ export class PlayerSpotsStore {
       index: 2,
       points: 0,
       previousBet: 0,
+      roundResult: 0,
     },
     {
       hand: [],
@@ -41,6 +43,7 @@ export class PlayerSpotsStore {
       index: 3,
       points: 0,
       previousBet: 0,
+      roundResult: 0,
     },
     {
       hand: [],
@@ -49,6 +52,7 @@ export class PlayerSpotsStore {
       index: 4,
       points: 0,
       previousBet: 0,
+      roundResult: 0,
     },
   ];
 
@@ -68,6 +72,7 @@ export class PlayerSpotsStore {
 
   @action
   resetBet(index: number) {
+    this.playerSpots[index].previousBet = this.playerSpots[index].bet;
     this.playerSpots[index].bet = 0;
   }
 
@@ -79,11 +84,36 @@ export class PlayerSpotsStore {
   }
 
   @action
+  calculateTotalWin() {
+    let totalWin: number = 0;
+    this.playerSpots.forEach((playerSpot) => {
+      totalWin += playerSpot.roundResult;
+    });
+    mainStore.userStore.setTotalWin(totalWin);
+  }
+
+  @action
+  calculateRoundResults() {
+    const dealerPoints = mainStore.roomStore.dealerPoints;
+    this.playerSpots.forEach((playerSpot) => {
+      const spotPoints = playerSpot.points;
+      if (spotPoints > dealerPoints && spotPoints <= 21) {
+        playerSpot.roundResult += playerSpot.previousBet * 2;
+      } else if (spotPoints < dealerPoints || spotPoints > 21) {
+        playerSpot.roundResult -= playerSpot.previousBet;
+      } else if (spotPoints === dealerPoints && spotPoints <= 21) {
+        playerSpot.roundResult = playerSpot.previousBet;
+      }
+    });
+  }
+
+  @action
   clear() {
     this.playerSpots.forEach((playerSpot) => {
       playerSpot.bet = 0;
       playerSpot.hand = [];
       playerSpot.points = 0;
+      playerSpot.roundResult = 0;
     });
   }
 }

@@ -1,14 +1,7 @@
-import { toJS } from "mobx";
 import { mainStore } from "../stores/MainStore";
-import {
-  IPlayerSpot,
-  IUser,
-  PlayerSpotStatus,
-  RoomState,
-} from "../types/types";
+import { IUser, RoomState } from "../types/types";
 import { startingBalance } from "./consts";
 import { AnimationGroup } from "@babylonjs/core/Animations/animationGroup";
-import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { ActionManager } from "@babylonjs/core/Actions/actionManager";
 import { ExecuteCodeAction } from "@babylonjs/core/Actions/directActions";
@@ -41,13 +34,6 @@ export const createNewUser = () => {
 const RandomUsername = `user${Math.floor(Math.random() * 10)}${Math.floor(
   Math.random() * 10
 )}${Math.floor(Math.random() * 10)}`;
-
-export const recalculatePoints = (index: number, recalcForDealer: boolean) => {
-  mainStore.playerSpotsStore.recalculatePoints(index);
-  if (recalcForDealer) {
-    mainStore.roomStore.recalculateDealerPoints();
-  }
-};
 
 export const startGame = () => {
   setTimeout(() => {
@@ -83,20 +69,6 @@ export const registerChipActions = (chip: Mesh) => {
       chip.scaling = new Vector3(1, 1, 1);
     })
   );
-};
-
-export const deactivatePlayerSpot = (index: number) => {
-  mainStore.playerSpotsStore.setPlayerSpotStatus(
-    index,
-    PlayerSpotStatus.inactive
-  );
-};
-
-export const placeBetOnPlayerSpot = (index: number, selectedBet: number) => {
-  //setting totalBet (displayed on bottom)
-  mainStore.userStore.addToTotalBet(selectedBet);
-  //placing bet for this playerSpot
-  mainStore.playerSpotsStore.placeBet(index, selectedBet);
 };
 
 export const initialDeck = [

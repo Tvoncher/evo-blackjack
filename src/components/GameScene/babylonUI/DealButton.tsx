@@ -2,8 +2,8 @@ import { FC, useCallback } from "react";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { observer } from "mobx-react-lite";
-import { recalculatePoints } from "../../../utils/utils";
 import { Html } from "react-babylonjs";
+import { recalculatePoints } from "../../../utils/buttons";
 
 const DealButton: FC = observer(() => {
   const playerSpots = mainStore.playerSpotsStore.playerSpots;

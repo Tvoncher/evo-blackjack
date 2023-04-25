@@ -1,19 +1,14 @@
 import { FC, useCallback } from "react";
-import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { observer } from "mobx-react-lite";
 import { Html } from "react-babylonjs";
 import "./HitNStandButtons.css";
 import { mainStore } from "../../../../stores/MainStore";
-import { RoomState } from "../../../../types/types";
+import { IButtonsProps, RoomState } from "../../../../types/types";
+import { checkPoints, findActiveSpot } from "../../../../utils/gameLogic";
 import {
   deactivatePlayerSpot,
   recalculatePoints,
-} from "../../../../utils/utils";
-import { checkPoints, findActiveSpot } from "../../../../utils/gameLogic";
-
-interface IButtonsProps {
-  index: number;
-}
+} from "../../../../utils/buttons";
 
 //handling hit/stand buttons
 const HitNStandButtons: FC<IButtonsProps> = observer(({ index }) => {

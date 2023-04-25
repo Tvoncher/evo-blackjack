@@ -13,7 +13,7 @@ import { usePlayerSpotCamera } from "../../../hooks/usePlayerSpotCamera";
 import PlayerSpotChip from "./PlayerSpotChip";
 import PlayerSpotMaterial from "./PlayerSpotMaterial";
 import { playerSpotDiameter, playerSpotHeight } from "../../../utils/consts";
-import { placeBetOnPlayerSpot } from "../../../utils/utils";
+import { placeBetOnPlayerSpot } from "../../../utils/playerSpot";
 
 const PlayerSpot: FC<IPlayerSpotProps> = observer(
   ({ points, position, rotation, status, index }) => {

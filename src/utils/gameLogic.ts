@@ -1,23 +1,27 @@
-import { toJS } from "mobx";
 import { mainStore } from "../stores/MainStore";
 import { IPlayerSpot, PlayerSpotStatus, RoomState } from "../types/types";
 
-//single file for handling main logic flow
-
 export const findActiveSpot = (): void => {
-  const activePlayerSpot: IPlayerSpot | undefined =
+  //finding first playerSpot with bets
+  const spotWithBets: IPlayerSpot | undefined =
     mainStore.playerSpotsStore.playerSpots.find(
       (playerSpot) => playerSpot.bet > 0
     );
-  if (activePlayerSpot) {
+  if (spotWithBets) {
     //setting state to active,so we can play now
     mainStore.playerSpotsStore.setPlayerSpotStatus(
-      activePlayerSpot.index,
+      spotWithBets.index,
       PlayerSpotStatus.active
     );
 
-    mainStore.playerSpotsStore.resetBet(activePlayerSpot.index);
-  } else mainStore.roomStore.setRoomState(RoomState.ending);
+    //reseting bet and saving as previous
+    mainStore.playerSpotsStore.resetBet(spotWithBets.index);
+  }
+  //if zero spots left -> end game
+  else {
+    mainStore.playerSpotsStore.calculateRoundResults();
+    mainStore.roomStore.setRoomState(RoomState.ending);
+  }
 };
 
 export const clearEverything = () => {

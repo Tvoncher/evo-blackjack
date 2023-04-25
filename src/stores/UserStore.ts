@@ -20,6 +20,9 @@ export class UserStore {
     selectedChip: 0,
   };
 
+  @observable
+  totalWin: number = 0;
+
   public constructor() {
     makeObservable(this);
 
@@ -41,6 +44,16 @@ export class UserStore {
   }
 
   @action
+  setTotalWin(totalWin: number) {
+    this.totalWin = totalWin;
+  }
+
+  @action
+  setBalance() {
+    this.user.balance += this.totalWin;
+  }
+
+  @action
   setUser(newUser: IUser) {
     this.user = newUser;
   }
@@ -54,10 +67,14 @@ export class UserStore {
   public userAuth() {
     const data = localStorage.getItem("user");
 
-    //setting user state if user is found
+    //setting user state if user exists
     if (data) {
       const parsedData: IUser = JSON.parse(data);
-      this.user = { ...this.user, ...parsedData };
+      this.user = {
+        ...this.user,
+        username: parsedData.username,
+        balance: parsedData.balance,
+      };
     } else createNewUser();
   }
 

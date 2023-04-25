@@ -5,7 +5,7 @@ import { RoomState } from "../../../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { observer } from "mobx-react-lite";
 import { useScene } from "react-babylonjs";
-import { resetCameraAngles } from "../../../utils/BaseCamera";
+import { resetCameraAngles } from "../../../utils/baseCamera";
 
 const BaseCamera: FC = observer(() => {
   const { alpha, beta, radius, target, minZ } = baseCameraParams;
