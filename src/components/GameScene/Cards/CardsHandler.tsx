@@ -8,7 +8,11 @@ import { observer } from "mobx-react-lite";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
-import { dealerSpotPosition } from "../../../utils/consts";
+import {
+  dealerSpotPosition,
+  playerSpotsPositions,
+  playerSpotsRotation,
+} from "../../../utils/consts";
 
 //displaying cards
 
@@ -27,7 +31,7 @@ export const CardsHandler: FC = observer(() => {
   return cardMesh ? (
     <>
       {mainStore.roomStore.roomState === RoomState.playing &&
-        playerSpots.map((playerSpot) =>
+        playerSpots.map((playerSpot, spotIndex) =>
           playerSpot.hand.map((handCard, i) => (
             <Card
               key={handCard.rank + handCard.suit + i}
@@ -36,8 +40,8 @@ export const CardsHandler: FC = observer(() => {
               suit={handCard.suit}
               rank={handCard.rank}
               offset={i / 30}
-              position={playerSpot.position}
-              rotation={playerSpot.rotation}
+              position={playerSpotsPositions[spotIndex]}
+              rotation={playerSpotsRotation[spotIndex]}
             />
           ))
         )}

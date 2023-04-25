@@ -44,18 +44,9 @@ export interface IPlayerSpot {
   bet: number;
   hand: ICard[];
   points: number;
-  position: Vector3;
-  rotation: Vector3;
+  previousBet: number;
   status: PlayerSpotStatus;
   index: number;
-}
-
-export interface IPlayerSpotsPositions {
-  0: Vector3;
-  1: Vector3;
-  2: Vector3;
-  3: Vector3;
-  4: Vector3;
 }
 
 export interface IBaseCameraParams {

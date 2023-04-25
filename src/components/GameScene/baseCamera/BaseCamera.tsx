@@ -13,6 +13,10 @@ const BaseCamera: FC = observer(() => {
   const roomState = mainStore.roomStore.roomState;
   const scene = useScene();
   const camera = scene!.cameras[0] as ArcRotateCamera;
+  //disabling users ability to rotate cam angles
+  if (camera) {
+    camera.inputs.clear();
+  }
 
   //moving back to initial angles
   if (roomState === RoomState.ending) {

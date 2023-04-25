@@ -3,7 +3,6 @@ import {
   IBaseCameraParams,
   IBaseLightParams,
   IChipProps,
-  IPlayerSpotsPositions,
 } from "../types/types";
 import { Color3 } from "@babylonjs/core/Maths/math";
 
@@ -22,13 +21,21 @@ export const baseLightParams: IBaseLightParams = {
   direction: new Vector3(0, 1, 0),
 };
 
-export const playerSpotsPositions: IPlayerSpotsPositions = {
-  0: new Vector3(-0.56, 1.03, 0.4),
-  1: new Vector3(-0.3, 1.03, 0.63),
-  2: new Vector3(0, 1.03, 0.73),
-  3: new Vector3(0.3, 1.03, 0.63),
-  4: new Vector3(0.56, 1.03, 0.4),
-};
+export const playerSpotsPositions: Vector3[] = [
+  new Vector3(-0.56, 1.03, 0.4),
+  new Vector3(-0.3, 1.03, 0.63),
+  new Vector3(0, 1.03, 0.73),
+  new Vector3(0.3, 1.03, 0.63),
+  new Vector3(0.56, 1.03, 0.4),
+];
+
+export const playerSpotsRotation: Vector3[] = [
+  new Vector3(0, -Math.PI / 2, 0),
+  new Vector3(0, -Math.PI / 4, 0),
+  new Vector3(0, 0, 0),
+  new Vector3(0, Math.PI / 4, 0),
+  new Vector3(0, Math.PI / 2, 0),
+];
 
 export const dealerSpotPosition: Vector3 = new Vector3(0, 1.05, 0.3);
 

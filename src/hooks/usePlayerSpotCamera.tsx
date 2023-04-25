@@ -3,6 +3,8 @@ import { PlayerSpotStatus } from "../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Animation } from "@babylonjs/core/Animations";
 
+const baseCameraAngle = Math.PI / 2;
+
 export const usePlayerSpotCamera = (
   status: PlayerSpotStatus,
   rotationY: number
@@ -17,7 +19,7 @@ export const usePlayerSpotCamera = (
       45,
       60,
       camera.alpha,
-      Math.PI / 2 + Math.sin(-rotationY / 1.4),
+      baseCameraAngle + Math.sin(-rotationY / 1.4),
       Animation.ANIMATIONLOOPMODE_CONSTANT
     );
 
