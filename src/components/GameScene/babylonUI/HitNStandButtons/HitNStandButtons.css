@@ -11,7 +11,6 @@
 }
 
 .title {
-  text-align: center;
   white-space: nowrap;
 }
 
@@ -20,6 +19,7 @@
 }
 
 .button-container {
+  cursor: pointer;
   width: 75px;
   height: 40px;
   padding: 40px 75px;
@@ -58,16 +58,16 @@
 .text {
   font-weight: 900;
   font-size: 30px;
-  color: #c4bba1;
+  color: var(--font-title-color);
   text-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.767);
 }
 
 .hit {
-  background: red;
+  background: var(--button-color-hit);
 }
 
 .stand {
-  background: rgb(15, 134, 15);
+  background: var(--button-color);
 }
 
 .deal {

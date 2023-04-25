@@ -10,16 +10,16 @@
 .play-button {
   border-radius: 50%;
   border-color: var(--font-golden-color);
-  padding: 3vw;
-  font-size: 3vw;
+  padding: 50px;
+  font-size: 50px;
   color: var(--font-golden-color);
   background: var(--main-bg-color);
   transition: 0.7s;
-  animation: pulsing 2s infinite ease-in-out;
+  animation: pulsing-anim 2s infinite ease-in-out;
   cursor: pointer;
 }
 
-@keyframes pulsing {
+@keyframes pulsing-anim {
   0% {
     scale: 1;
   }

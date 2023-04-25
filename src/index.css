@@ -18,6 +18,12 @@
     rgb(230, 179, 76) 85%
   );
 
+  --font-title-color: #c4bba1;
+
+  --button-color: rgb(15, 134, 15);
+
+  --button-color-hit: red;
+
   overflow: hidden;
 }
 
