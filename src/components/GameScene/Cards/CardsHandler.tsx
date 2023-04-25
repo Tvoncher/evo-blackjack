@@ -30,40 +30,38 @@ export const CardsHandler: FC = observer(() => {
 
   return cardMesh ? (
     <>
-      {mainStore.roomStore.roomState === RoomState.playing &&
-        playerSpots.map((playerSpot, spotIndex) =>
-          playerSpot.hand.map((handCard, i) => (
-            <Card
-              key={handCard.rank + handCard.suit + i}
-              card={cardMesh}
-              value={handCard.value}
-              suit={handCard.suit}
-              rank={handCard.rank}
-              offset={i / 30}
-              position={playerSpotsPositions[spotIndex]}
-              rotation={playerSpotsRotation[spotIndex]}
-            />
-          ))
-        )}
+      {playerSpots.map((playerSpot, spotIndex) =>
+        playerSpot.hand.map((handCard, i) => (
+          <Card
+            key={handCard.rank + handCard.suit + i}
+            card={cardMesh}
+            value={handCard.value}
+            suit={handCard.suit}
+            rank={handCard.rank}
+            offset={i / 30}
+            position={playerSpotsPositions[spotIndex]}
+            rotation={playerSpotsRotation[spotIndex]}
+          />
+        ))
+      )}
 
       {/*dealer cards*/}
-      {mainStore.roomStore.roomState === RoomState.playing &&
-        dealerCards.map((card, i) => (
-          <Card
-            key={card.rank + card.suit + i}
-            card={cardMesh}
-            value={card.value}
-            suit={card.suit}
-            rank={card.rank}
-            offset={i / 30}
-            position={dealerSpotPosition}
-            rotation={
-              dealerCards.length === 2 && i === 1
-                ? new Vector3(0, 0, Math.PI)
-                : Vector3.Zero()
-            }
-          />
-        ))}
+      {dealerCards.map((card, i) => (
+        <Card
+          key={card.rank + card.suit + i}
+          card={cardMesh}
+          value={card.value}
+          suit={card.suit}
+          rank={card.rank}
+          offset={i / 30}
+          position={dealerSpotPosition}
+          rotation={
+            dealerCards.length === 2 && i === 1
+              ? new Vector3(0, 0, Math.PI)
+              : Vector3.Zero()
+          }
+        />
+      ))}
     </>
   ) : null;
 });

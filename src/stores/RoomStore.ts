@@ -5,7 +5,6 @@ import {
   makeObservable,
   observable,
   reaction,
-  toJS,
 } from "mobx";
 import { ICard, RoomState } from "../types/types";
 import { shuffleDeck } from "../utils/utils";
@@ -101,6 +100,18 @@ export class RoomStore {
       this.dealerCards.forEach((card) => (newPoints += card.value));
       this.dealerPoints = newPoints;
     } else this.dealerPoints = this.dealerCards[0].value;
+  }
+
+  @action
+  runDealerLogic(): void {
+    setTimeout(() => {
+      if (this.dealerPoints <= 16) {
+        const newDealerCards = this.takeCards(1);
+        this.dealerCards = [...this.dealerCards, ...newDealerCards];
+        this.recalculateDealerPoints();
+        return this.runDealerLogic();
+      }
+    }, 300);
   }
 
   @action
