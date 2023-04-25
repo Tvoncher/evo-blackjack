@@ -1,5 +1,6 @@
 import { mainStore } from "../stores/MainStore";
 import { IPlayerSpot, PlayerSpotStatus, RoomState } from "../types/types";
+import { deactivatePlayerSpot } from "./buttons";
 
 export const findActiveSpot = (): void => {
   //finding first playerSpot with bets
@@ -14,6 +15,9 @@ export const findActiveSpot = (): void => {
       PlayerSpotStatus.active
     );
 
+    //need this for easier access in future
+    mainStore.playerSpotsStore.setActivePlayerSpotIndex(spotWithBets.index);
+
     //reseting bet and saving as previous
     mainStore.playerSpotsStore.resetBet(spotWithBets.index);
   }
@@ -25,21 +29,21 @@ export const findActiveSpot = (): void => {
   }
 };
 
-export const clearEverything = () => {
+export const checkPoints = () => {
+  const activeSpotIndex = mainStore.playerSpotsStore.activePlayerSpotIndex;
+  if (typeof activeSpotIndex === "number") {
+    const points =
+      mainStore.playerSpotsStore.playerSpots[activeSpotIndex].points;
+
+    if (points >= 21) {
+      deactivatePlayerSpot();
+      findActiveSpot();
+    }
+  }
+};
+
+export const clearStoresData = () => {
   mainStore.playerSpotsStore.clear();
   mainStore.roomStore.clear();
   mainStore.userStore.clear();
-};
-
-export const checkPoints = (index: number) => {
-  const points = mainStore.playerSpotsStore.playerSpots[index].points;
-
-  if (points > 21) {
-    mainStore.playerSpotsStore.setPlayerSpotStatus(
-      index,
-      PlayerSpotStatus.inactive
-    );
-
-    findActiveSpot();
-  }
 };

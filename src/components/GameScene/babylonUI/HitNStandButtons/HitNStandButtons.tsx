@@ -3,34 +3,27 @@ import { observer } from "mobx-react-lite";
 import { Html } from "react-babylonjs";
 import "./HitNStandButtons.css";
 import { mainStore } from "../../../../stores/MainStore";
-import { IButtonsProps, RoomState } from "../../../../types/types";
+import { RoomState } from "../../../../types/types";
 import { checkPoints, findActiveSpot } from "../../../../utils/gameLogic";
 import {
   deactivatePlayerSpot,
+  dealCardToPlayerSpot,
   recalculatePoints,
 } from "../../../../utils/buttons";
 
 //handling hit/stand buttons
-const HitNStandButtons: FC<IButtonsProps> = observer(({ index }) => {
+const HitNStandButtons: FC = observer(() => {
   const roomState = mainStore.roomStore.roomState;
-  const roomStore = mainStore.roomStore;
-  const points = mainStore.playerSpotsStore.playerSpots[index].points;
 
   const handleHit = useCallback(() => {
-    const newCard = roomStore.takeCards(1);
-    mainStore.playerSpotsStore.playerSpots[index].hand = [
-      ...mainStore.playerSpotsStore.playerSpots[index].hand,
-      ...newCard,
-    ];
-    recalculatePoints(index, false);
-
-    checkPoints(index);
-  }, [points]);
+    dealCardToPlayerSpot();
+    recalculatePoints(false);
+    checkPoints();
+  }, []);
 
   const handleStand = useCallback(() => {
     //reseting status and finding next spot with bets
-    deactivatePlayerSpot(index);
-
+    deactivatePlayerSpot();
     findActiveSpot();
   }, []);
 

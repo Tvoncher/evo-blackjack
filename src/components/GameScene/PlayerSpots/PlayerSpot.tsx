@@ -70,10 +70,6 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
             chip={chip}
           />
         ))}
-        {/*rendering buttons for active spot */}
-        {status === PlayerSpotStatus.active && (
-          <HitNStandButtons index={index} />
-        )}
       </>
     );
   }

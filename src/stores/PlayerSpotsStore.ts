@@ -56,8 +56,16 @@ export class PlayerSpotsStore {
     },
   ];
 
+  @observable
+  activePlayerSpotIndex: number | undefined = undefined;
+
   public constructor() {
     makeObservable(this);
+  }
+
+  @action
+  setActivePlayerSpotIndex(index: number) {
+    this.activePlayerSpotIndex = index;
   }
 
   @action

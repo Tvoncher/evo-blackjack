@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { RoomState } from "../../../types/types";
 import ChipsHandler from "./Chips/ChipsHandler";
 import DealButton from "./DealButton";
+import HitNStandButtons from "./HitNStandButtons/HitNStandButtons";
 
 //handling all UI elements rendered by babylon
 const BabylonUI: FC = observer(() => {
@@ -12,6 +13,7 @@ const BabylonUI: FC = observer(() => {
   return (
     <>
       {roomState === RoomState.betting && <ChipsHandler />}
+      <HitNStandButtons />
       <DealButton />
     </>
   );

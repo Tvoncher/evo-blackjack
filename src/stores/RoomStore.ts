@@ -9,7 +9,7 @@ import {
 import { ICard, RoomState } from "../types/types";
 import { shuffleDeck } from "../utils/utils";
 
-import { clearEverything, findActiveSpot } from "../utils/gameLogic";
+import { clearStoresData, findActiveSpot } from "../utils/gameLogic";
 import { mainStore } from "./MainStore";
 
 configure({ enforceActions: "observed" });
@@ -58,7 +58,7 @@ export class RoomStore {
             mainStore.playerSpotsStore.calculateTotalWin();
             mainStore.userStore.setBalance();
             setTimeout(() => {
-              clearEverything();
+              clearStoresData();
               this.setRoomState(RoomState.waiting);
             }, 3500);
             break;

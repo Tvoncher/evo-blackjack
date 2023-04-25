@@ -22,7 +22,7 @@ const DealButton: FC = observer(() => {
         playerSpots.forEach((playerSpot, i) => {
           if (playerSpot.bet > 0) {
             playerSpot.hand = roomStore.takeCards(2);
-            recalculatePoints(i, true);
+            recalculatePoints(true);
           }
 
           mainStore.roomStore.setRoomState(RoomState.playing);

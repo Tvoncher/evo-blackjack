@@ -40,10 +40,6 @@ export enum PlayerSpotStatus {
   inactive = "inactive",
 }
 
-export interface IButtonsProps {
-  index: number;
-}
-
 export interface IPlayerSpot {
   bet: number;
   hand: ICard[];
