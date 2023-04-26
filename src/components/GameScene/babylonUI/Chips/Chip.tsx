@@ -15,7 +15,7 @@ const Chip: FC<IChipProps> = observer(({ name, position }) => {
   const diffuseTexture: Texture = new Texture(`textures/chips/chip${name}.png`);
   const bumpTexture: Texture = new Texture("textures/chips/bumpTexture.png");
 
-  const selectedChip = mainStore.userStore.user.selectedChip;
+  const selectedChip = mainStore.userStore.selectedChip;
 
   //register actions like onClick,onHover for mesh
   const handleActions = useCallback((chip: Mesh) => {

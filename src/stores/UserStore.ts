@@ -1,13 +1,14 @@
 import {
+  IReactionDisposer,
   action,
-  autorun,
   configure,
   makeObservable,
   observable,
-  toJS,
+  reaction,
 } from "mobx";
 import { IUser } from "../types/types";
-import { createNewUser } from "../utils/utils";
+import { createNewUser, loadUser } from "../utils/utils";
+import { STARTING_BALANCE } from "../utils/consts";
 
 configure({ enforceActions: "observed" });
 
@@ -15,32 +16,39 @@ export class UserStore {
   @observable
   public user: IUser = {
     username: "",
-    balance: 0,
+    balance: STARTING_BALANCE,
     totalBet: 0,
-    selectedChip: 0,
   };
+
+  @observable
+  selectedChip: number = 0;
 
   @observable
   totalWin: number = 0;
 
+  @observable
+  disposeReaction: IReactionDisposer;
+
   public constructor() {
     makeObservable(this);
 
-    autorun(() => {
-      if (this.user.balance !== 0) {
+    //saving user data every time balance changes
+    this.disposeReaction = reaction(
+      () => this.user.balance,
+      () => {
         this.saveToStorage();
       }
-    });
-  }
-
-  @action
-  setselectedChip(value: number) {
-    this.user.selectedChip = value;
+    );
   }
 
   @action
   addToTotalBet(value: number) {
     this.user.totalBet += value;
+  }
+
+  @action
+  setSelectedChip(value: number) {
+    this.selectedChip = value;
   }
 
   @action
@@ -65,22 +73,19 @@ export class UserStore {
 
   @action
   public userAuth() {
-    const data = localStorage.getItem("user");
-
-    //setting user state if user exists
-    if (data) {
-      const parsedData: IUser = JSON.parse(data);
-      this.user = {
-        ...this.user,
-        username: parsedData.username,
-        balance: parsedData.balance,
-      };
-    } else createNewUser();
+    //finding existing user
+    const userData = localStorage.getItem("user");
+    //setting user data if user exists
+    if (userData) {
+      loadUser(userData);
+    } else {
+      createNewUser();
+    }
   }
 
   @action
   clear() {
     this.user.totalBet = 0;
-    this.user.selectedChip = 0;
+    this.selectedChip = 0;
   }
 }

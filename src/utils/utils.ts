@@ -22,9 +22,8 @@ export const shuffleDeck = () => {
 export const createNewUser = () => {
   const newUser: IUser = {
     balance: STARTING_BALANCE,
-    selectedChip: 0,
-    totalBet: 0,
     username: RandomUsername,
+    totalBet: 0,
   };
 
   //pushing newly created user to app state
@@ -48,16 +47,16 @@ export const runAnim = (animation: AnimationGroup) => {
   animation.play();
 };
 
+//setting actions/events like onHover/onMouseOver
 export const registerChipActions = (chip: Mesh) => {
   chip.actionManager = new ActionManager(chip.getScene());
   chip.actionManager.registerAction(
     new ExecuteCodeAction(ActionManager.OnPickTrigger, function () {
-      chip.scaling = new Vector3(1, 1, 1);
-      mainStore.userStore.setselectedChip(+chip.name);
+      chip.scaling = Vector3.One();
+      mainStore.userStore.setSelectedChip(+chip.name);
     })
   );
 
-  //setting like onHover / onMouseOver
   chip.actionManager.registerAction(
     new ExecuteCodeAction(ActionManager.OnPointerOverTrigger, function () {
       chip.scaling = new Vector3(1.1, 1.1, 1.1);
@@ -69,6 +68,15 @@ export const registerChipActions = (chip: Mesh) => {
       chip.scaling = new Vector3(1, 1, 1);
     })
   );
+};
+
+export const loadUser = (userData: string) => {
+  const parsedData: IUser = JSON.parse(userData);
+  mainStore.userStore.user = {
+    ...mainStore.userStore.user,
+    username: parsedData.username,
+    balance: parsedData.balance,
+  };
 };
 
 export const initialDeck = [

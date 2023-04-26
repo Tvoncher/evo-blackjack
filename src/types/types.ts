@@ -3,9 +3,8 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh";
 
 export interface IUser {
   balance: number;
-  totalBet: number;
-  selectedChip: number;
   username: string;
+  totalBet: number;
 }
 
 export interface ICard {
