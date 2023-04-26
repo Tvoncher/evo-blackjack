@@ -1,10 +1,4 @@
-import {
-  IReactionDisposer,
-  action,
-  makeObservable,
-  observable,
-  reaction,
-} from "mobx";
+import { action, makeObservable, observable, reaction } from "mobx";
 import { IUser } from "../types/types";
 import { createNewUser, loadUser } from "../utils/utils";
 import { STARTING_BALANCE } from "../utils/consts";
@@ -23,14 +17,11 @@ export class UserStore {
   @observable
   totalWin: number = 0;
 
-  @observable
-  disposeReaction: IReactionDisposer;
-
   public constructor() {
     makeObservable(this);
 
     //saving user data every time balance changes
-    this.disposeReaction = reaction(
+    reaction(
       () => this.user.balance,
       () => {
         this.saveToStorage();

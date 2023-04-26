@@ -62,6 +62,14 @@ export class PlayerSpotsStore {
   }
 
   @action
+  setPlayerSpotHand(numOfCards: number, spotIndex: number) {
+    this.playerSpots[spotIndex].hand = [
+      ...this.playerSpots[spotIndex].hand,
+      ...mainStore.roomStore.takeCards(numOfCards),
+    ];
+  }
+
+  @action
   setActivePlayerSpotIndex(index: number) {
     this.activePlayerSpotIndex = index;
   }
@@ -78,6 +86,7 @@ export class PlayerSpotsStore {
 
   @action
   resetBet(index: number) {
+    //need to store previous bet for rebet logic
     this.playerSpots[index].previousBet = this.playerSpots[index].bet;
     this.playerSpots[index].bet = 0;
   }

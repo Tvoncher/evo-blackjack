@@ -21,21 +21,12 @@ export const recalculatePoints = (recalcForDealer: boolean) => {
   }
 };
 
-export const dealCard = (target: "player" | "dealer") => {
+export const dealCards = (target: "player" | "dealer", numOfCards: number) => {
   //targetPlayerSpot represents targeted hand - playerSpot or dealer
-  const newCard = mainStore.roomStore.takeCards(1);
-
   if (target === "player") {
     const index = mainStore.playerSpotsStore.activePlayerSpotIndex;
     if (typeof index === "number") {
-      mainStore.playerSpotsStore.playerSpots[index].hand = [
-        ...mainStore.playerSpotsStore.playerSpots[index].hand,
-        ...newCard,
-      ];
+      mainStore.playerSpotsStore.setPlayerSpotHand(numOfCards, index);
     }
-  } else
-    mainStore.roomStore.dealerHand = [
-      ...mainStore.roomStore.dealerHand,
-      ...newCard,
-    ];
+  } else mainStore.roomStore.setDealerHand(numOfCards);
 };

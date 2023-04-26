@@ -1,10 +1,11 @@
 import { createContext } from "react";
 import { PlayerSpotsStore } from "./PlayerSpotsStore";
-import { makeObservable, observable } from "mobx";
+import { configure, makeObservable, observable } from "mobx";
 import { UserStore } from "./UserStore";
 import { RoomStore } from "./RoomStore";
 
 //handling all stores together
+configure({ enforceActions: "always" });
 class MainStore {
   @observable
   playerSpotsStore = new PlayerSpotsStore();

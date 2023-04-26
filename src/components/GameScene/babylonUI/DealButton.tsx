@@ -18,14 +18,14 @@ const DealButton: FC = observer(() => {
       setTimeout(() => {
         playerSpots.forEach((playerSpot) => {
           if (playerSpot.bet > 0) {
-            playerSpot.hand = roomStore.takeCards(2);
+            mainStore.playerSpotsStore.setPlayerSpotHand(2, playerSpot.index);
             mainStore.playerSpotsStore.recalculatePoints(playerSpot.index);
           }
         });
-        mainStore.roomStore.dealerHand = roomStore.takeCards(2);
-        mainStore.roomStore.recalculateDealerPoints();
+        roomStore.setDealerHand(2);
+        roomStore.recalculateDealerPoints();
 
-        mainStore.roomStore.setRoomState(RoomState.playing);
+        roomStore.setRoomState(RoomState.playing);
       }, 700);
     }
   }, []);
@@ -46,5 +46,4 @@ const DealButton: FC = observer(() => {
     </>
   );
 });
-
 export default DealButton;

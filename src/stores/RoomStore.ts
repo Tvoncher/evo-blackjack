@@ -1,10 +1,4 @@
-import {
-  IReactionDisposer,
-  action,
-  makeObservable,
-  observable,
-  reaction,
-} from "mobx";
+import { action, makeObservable, observable, reaction } from "mobx";
 import { ICard, RoomState } from "../types/types";
 import { shuffleDeck } from "../utils/utils";
 import { clearStoresData, findActiveSpot } from "../utils/gameLogic";
@@ -13,7 +7,7 @@ import {
   DEALING_ANIMATION_DURATION,
   ROUND_RESTART_WAIT_TIME,
 } from "../utils/consts";
-import { dealCard } from "../utils/buttons";
+import { dealCards } from "../utils/buttons";
 
 //handling everything related to room - state,dealer,deck of cards
 export class RoomStore {
@@ -32,13 +26,10 @@ export class RoomStore {
   @observable
   isLoading: boolean = true;
 
-  @observable
-  disposeReaction: IReactionDisposer;
-
   public constructor() {
     makeObservable(this);
 
-    this.disposeReaction = reaction(
+    reaction(
       () => this.roomState,
       (newState) => {
         switch (newState) {
@@ -86,6 +77,11 @@ export class RoomStore {
   }
 
   @action
+  setDealerHand(numOfCards: number) {
+    this.dealerHand = [...this.dealerHand, ...this.takeCards(numOfCards)];
+  }
+
+  @action
   takeCards(numOfCards: number) {
     return this.deck.splice(0, numOfCards);
   }
@@ -104,7 +100,7 @@ export class RoomStore {
   runDealerLogic(): void {
     setTimeout(() => {
       if (this.dealerPoints <= 16) {
-        dealCard("dealer");
+        dealCards("dealer", 1);
         this.recalculateDealerPoints();
         return this.runDealerLogic();
       }
