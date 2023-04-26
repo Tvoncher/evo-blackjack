@@ -88,14 +88,29 @@ export class RoomStore {
 
   @action
   recalculateDealerPoints() {
-    let newPoints: number = 0;
     if (this.dealerHand.length > 2) {
-      this.dealerHand.forEach((card) => (newPoints += card.value));
+      let newPoints: number = 0;
+      let aces: number = 0;
+
+      this.dealerHand.forEach((card) => {
+        if (card.rank === "A") {
+          aces++;
+          newPoints += 11;
+        } else newPoints += card.value;
+      });
+
+      for (let i = 0; i < aces; i++) {
+        if (newPoints > 21) {
+          newPoints -= 10;
+        }
+      }
       this.dealerPoints = newPoints;
-    } else this.dealerPoints = this.dealerHand[0].value;
+    }
+    //hiding second card value at the beginning
+    else this.dealerPoints = this.dealerHand[0].value;
   }
 
-  //hits at 16 and below
+  //dealer hits at 16 and below
   @action
   runDealerLogic(): void {
     setTimeout(() => {

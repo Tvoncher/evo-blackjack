@@ -94,7 +94,20 @@ export class PlayerSpotsStore {
   @action
   recalculatePoints(index: number) {
     let newPoints: number = 0;
-    this.playerSpots[index].hand.forEach((card) => (newPoints += card.value));
+    let aces: number = 0;
+
+    this.playerSpots[index].hand.forEach((card) => {
+      if (card.rank === "A") {
+        aces++;
+        newPoints += 11;
+      } else newPoints += card.value;
+    });
+
+    for (let i = 0; i < aces; i++) {
+      if (newPoints > 21) {
+        newPoints -= 10;
+      }
+    }
     this.playerSpots[index].points = newPoints;
   }
 

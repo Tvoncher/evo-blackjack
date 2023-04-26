@@ -143,7 +143,7 @@ export const initialDeck = [
   {
     suit: "hearts",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "diamonds",
@@ -208,7 +208,7 @@ export const initialDeck = [
   {
     suit: "diamonds",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "clubs",
@@ -273,7 +273,7 @@ export const initialDeck = [
   {
     suit: "clubs",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "spades",
@@ -338,7 +338,7 @@ export const initialDeck = [
   {
     suit: "spades",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
 
   {
@@ -404,7 +404,7 @@ export const initialDeck = [
   {
     suit: "hearts",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "diamonds",
@@ -469,7 +469,7 @@ export const initialDeck = [
   {
     suit: "diamonds",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "clubs",
@@ -534,7 +534,7 @@ export const initialDeck = [
   {
     suit: "clubs",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "spades",
@@ -599,7 +599,7 @@ export const initialDeck = [
   {
     suit: "spades",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
 
   {
@@ -665,7 +665,7 @@ export const initialDeck = [
   {
     suit: "hearts",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "diamonds",
@@ -730,7 +730,7 @@ export const initialDeck = [
   {
     suit: "diamonds",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "clubs",
@@ -795,7 +795,7 @@ export const initialDeck = [
   {
     suit: "clubs",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "spades",
@@ -860,7 +860,7 @@ export const initialDeck = [
   {
     suit: "spades",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
 
   {
@@ -926,7 +926,7 @@ export const initialDeck = [
   {
     suit: "hearts",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "diamonds",
@@ -991,7 +991,7 @@ export const initialDeck = [
   {
     suit: "diamonds",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "clubs",
@@ -1056,7 +1056,7 @@ export const initialDeck = [
   {
     suit: "clubs",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
   {
     suit: "spades",
@@ -1121,6 +1121,6 @@ export const initialDeck = [
   {
     suit: "spades",
     rank: "A",
-    value: 1 | 11,
+    value: 11,
   },
 ];
