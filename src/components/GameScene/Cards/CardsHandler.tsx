@@ -13,8 +13,7 @@ import {
   PLAYER_SPOTS_ROTATION,
 } from "../../../utils/consts";
 
-//displaying cards
-
+// displaying cards
 export const CardsHandler: FC = observer(() => {
   const assetManagerResult = useAssetManager(assetsTask);
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);
@@ -23,9 +22,8 @@ export const CardsHandler: FC = observer(() => {
 
   useEffect(() => {
     const cardTask = assetManagerResult.taskNameMap["card"] as MeshAssetTask;
-
     setCardMesh(() => cardTask.loadedMeshes[0] as Mesh);
-  });
+  }, [assetManagerResult.taskNameMap]);
 
   return cardMesh ? (
     <>
