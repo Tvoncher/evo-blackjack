@@ -5,7 +5,7 @@ import { STARTING_BALANCE } from "../utils/consts";
 
 export class UserStore {
   @observable
-  public user: IUser = {
+  user: IUser = {
     username: "",
     balance: STARTING_BALANCE,
     totalBet: 0,

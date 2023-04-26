@@ -5,7 +5,7 @@ import { mainStore } from "./MainStore";
 //handling all playerSpots data
 export class PlayerSpotsStore {
   @observable
-  public playerSpots: IPlayerSpot[] = [
+  playerSpots: IPlayerSpot[] = [
     {
       hand: [],
       bet: 0,
