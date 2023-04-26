@@ -24,6 +24,7 @@ export enum RoomState {
   dealing = "dealing",
   playing = "playing",
   waiting = "waiting",
+  dealerPlaying = "dealerPlaying",
   ending = "ending",
 }
 
@@ -39,6 +40,12 @@ export enum PlayerSpotStatus {
   inactive = "inactive",
 }
 
+export enum roundWinningStatus {
+  win = "win",
+  lose = "lose",
+  tie = "tie",
+}
+
 export interface IPlayerSpot {
   bet: number;
   hand: ICard[];
@@ -46,7 +53,8 @@ export interface IPlayerSpot {
   previousBet: number;
   status: PlayerSpotStatus;
   index: number;
-  roundResult: number;
+  roundProfit: number;
+  roundWinningStatus: roundWinningStatus;
 }
 
 export interface IBaseCameraParams {
@@ -87,5 +95,6 @@ export interface IPlayerSpotProps {
   position: Vector3;
   rotation: Vector3;
   index: number;
+  roundWinningStatus: roundWinningStatus;
   status: PlayerSpotStatus;
 }

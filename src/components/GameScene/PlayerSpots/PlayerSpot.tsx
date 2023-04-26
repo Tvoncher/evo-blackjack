@@ -14,7 +14,7 @@ import {
 import { placeBetOnPlayerSpot } from "../../../utils/playerSpot";
 
 const PlayerSpot: FC<IPlayerSpotProps> = observer(
-  ({ points, position, rotation, status, index }) => {
+  ({ points, position, rotation, status, index, roundWinningStatus }) => {
     const [playerSpotChips, setPlayerSpotChip] = useState<number[]>([]);
     const roomState = mainStore.roomStore.roomState;
     const playerSpotRef = useRef(null);
@@ -52,7 +52,10 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
           position={position}
           isVisible={roomState === RoomState.betting}
         >
-          <CardsTooltip points={points} />
+          <CardsTooltip
+            points={points}
+            roundWinningStatus={roundWinningStatus}
+          />
 
           <PlayerSpotMaterial playerSpotChipsLength={playerSpotChips.length} />
         </cylinder>

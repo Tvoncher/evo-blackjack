@@ -27,6 +27,9 @@ export class RoomStore {
   @observable
   isLoading: boolean = true;
 
+  @observable
+  hasDealerPlayed: boolean = false;
+
   public constructor() {
     makeObservable(this);
 
@@ -45,13 +48,23 @@ export class RoomStore {
             findActiveSpot();
             break;
 
+          case RoomState.dealerPlaying:
+            mainStore.roomStore.runDealerLogic();
+            break;
+
           case RoomState.ending:
+            mainStore.playerSpotsStore.setWinners();
+            mainStore.playerSpotsStore.calculateRoundProfits();
             mainStore.playerSpotsStore.calculateTotalWin();
             mainStore.userStore.setBalance();
             setTimeout(() => {
               clearStoresData();
               this.setRoomState(RoomState.waiting);
             }, ROUND_RESTART_WAIT_TIME + ENDING_ANIMATION_DURATION);
+
+            if (this.deck.length <= 104) {
+              shuffleDeck();
+            }
             break;
 
           case RoomState.waiting:
@@ -114,18 +127,19 @@ export class RoomStore {
   //dealer hits at 16 and below
   @action
   runDealerLogic(): void {
-    setTimeout(() => {
-      if (this.dealerPoints <= 16) {
+    if (this.dealerPoints <= 16) {
+      setTimeout(() => {
         dealCards("dealer", 1);
         this.recalculateDealerPoints();
         return this.runDealerLogic();
-      }
-    }, 500);
+      }, 700);
+    } else this.setRoomState(RoomState.ending);
   }
 
   @action
   clear() {
     this.dealerHand = [];
     this.dealerPoints = 0;
+    this.hasDealerPlayed = false;
   }
 }

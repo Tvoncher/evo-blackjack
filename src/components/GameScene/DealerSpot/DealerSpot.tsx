@@ -1,17 +1,13 @@
 import { FC } from "react";
-import { mainStore } from "../../../stores/MainStore";
-import CardsTooltip from "../BabylonUI/CardsTooltip";
 import { DEALER_SPOT_POSITION } from "../../../utils/consts";
-import { observer } from "mobx-react-lite";
+import DealerCardsTooltip from "../BabylonUI/DealerCardsTooltip";
 
 // displaying dealer tooltip
-const DealerSpot: FC = observer(() => {
-  const dealerPoints = mainStore.roomStore.dealerPoints;
-
+const DealerSpot: FC = () => {
   return (
-    <transformNode name="dealer-spot" position={DEALER_SPOT_POSITION}>
-      <CardsTooltip points={dealerPoints} />
+    <transformNode name="dealer__spot" position={DEALER_SPOT_POSITION}>
+      <DealerCardsTooltip />
     </transformNode>
   );
-});
+};
 export default DealerSpot;

@@ -1,5 +1,9 @@
 import { action, makeObservable, observable } from "mobx";
-import { IPlayerSpot, PlayerSpotStatus } from "../types/types";
+import {
+  IPlayerSpot,
+  PlayerSpotStatus,
+  roundWinningStatus,
+} from "../types/types";
 import { mainStore } from "./MainStore";
 
 //handling all playerSpots data
@@ -13,7 +17,8 @@ export class PlayerSpotsStore {
       index: 0,
       points: 0,
       previousBet: 0,
-      roundResult: 0,
+      roundProfit: 0,
+      roundWinningStatus: roundWinningStatus.lose,
     },
     {
       hand: [],
@@ -22,17 +27,18 @@ export class PlayerSpotsStore {
       index: 1,
       points: 0,
       previousBet: 0,
-      roundResult: 0,
+      roundProfit: 0,
+      roundWinningStatus: roundWinningStatus.lose,
     },
     {
       hand: [],
       bet: 0,
       status: PlayerSpotStatus.inactive,
-
       index: 2,
       points: 0,
       previousBet: 0,
-      roundResult: 0,
+      roundProfit: 0,
+      roundWinningStatus: roundWinningStatus.lose,
     },
     {
       hand: [],
@@ -41,7 +47,8 @@ export class PlayerSpotsStore {
       index: 3,
       points: 0,
       previousBet: 0,
-      roundResult: 0,
+      roundProfit: 0,
+      roundWinningStatus: roundWinningStatus.lose,
     },
     {
       hand: [],
@@ -50,7 +57,8 @@ export class PlayerSpotsStore {
       index: 4,
       points: 0,
       previousBet: 0,
-      roundResult: 0,
+      roundProfit: 0,
+      roundWinningStatus: roundWinningStatus.lose,
     },
   ];
 
@@ -115,22 +123,48 @@ export class PlayerSpotsStore {
   calculateTotalWin() {
     let totalWin: number = 0;
     this.playerSpots.forEach((playerSpot) => {
-      totalWin += playerSpot.roundResult;
+      totalWin += playerSpot.roundProfit;
     });
     mainStore.userStore.setTotalWin(totalWin);
   }
 
   @action
-  calculateRoundResults() {
+  calculateRoundProfits() {
+    this.playerSpots.forEach((playerSpot) => {
+      const spotWinningStatus = playerSpot.roundWinningStatus;
+
+      switch (spotWinningStatus) {
+        case roundWinningStatus.win:
+          playerSpot.roundProfit += playerSpot.previousBet;
+          break;
+
+        case roundWinningStatus.lose:
+          playerSpot.roundProfit -= playerSpot.previousBet;
+          break;
+
+        case roundWinningStatus.tie:
+          playerSpot.roundProfit = playerSpot.previousBet;
+          break;
+      }
+    });
+  }
+
+  @action
+  setWinners() {
     const dealerPoints = mainStore.roomStore.dealerPoints;
     this.playerSpots.forEach((playerSpot) => {
       const spotPoints = playerSpot.points;
-      if (spotPoints > dealerPoints && spotPoints <= 21) {
-        playerSpot.roundResult += playerSpot.previousBet * 2;
-      } else if (spotPoints < dealerPoints || spotPoints > 21) {
-        playerSpot.roundResult -= playerSpot.previousBet;
-      } else if (spotPoints === dealerPoints && spotPoints <= 21) {
-        playerSpot.roundResult = playerSpot.previousBet;
+
+      if (spotPoints > 21) {
+        playerSpot.roundWinningStatus = roundWinningStatus.lose;
+      } else if (dealerPoints > 21) {
+        playerSpot.roundWinningStatus = roundWinningStatus.win;
+      } else if (spotPoints > dealerPoints) {
+        playerSpot.roundWinningStatus = roundWinningStatus.win;
+      } else if (spotPoints < dealerPoints) {
+        playerSpot.roundWinningStatus = roundWinningStatus.lose;
+      } else {
+        playerSpot.roundWinningStatus = roundWinningStatus.tie;
       }
     });
   }
@@ -141,7 +175,8 @@ export class PlayerSpotsStore {
       playerSpot.bet = 0;
       playerSpot.hand = [];
       playerSpot.points = 0;
-      playerSpot.roundResult = 0;
+      playerSpot.roundProfit = 0;
+      playerSpot.roundWinningStatus = roundWinningStatus.lose;
     });
   }
 }

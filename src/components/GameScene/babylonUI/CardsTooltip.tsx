@@ -1,21 +1,20 @@
 import { FC } from "react";
-import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { mainStore } from "../../../stores/MainStore";
-import { RoomState } from "../../../types/types";
+import { RoomState, roundWinningStatus } from "../../../types/types";
 import { Html } from "react-babylonjs";
 
 interface ICardsTooltip {
   points: number;
+  roundWinningStatus: roundWinningStatus;
 }
 
 // small tooltip displaying points / win / lose
-const CardsTooltip: FC<ICardsTooltip> = ({ points }) => {
+const CardsTooltip: FC<ICardsTooltip> = ({ points, roundWinningStatus }) => {
   const roomState = mainStore.roomStore.roomState;
-  const dealerPoints = mainStore.roomStore.dealerPoints;
 
   return (
     <>
-      {roomState === RoomState.playing && points > 0 && (
+      {roomState !== RoomState.ending && points > 0 && (
         <Html name="html">
           {
             <div
@@ -53,7 +52,7 @@ const CardsTooltip: FC<ICardsTooltip> = ({ points }) => {
                 right: "50px",
               }}
             >
-              {points > dealerPoints && points <= 21 ? "win" : "lose"}
+              {roundWinningStatus}
             </div>
           }
         </Html>

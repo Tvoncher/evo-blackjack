@@ -23,9 +23,7 @@ export const findActiveSpot = (): void => {
   }
   //if zero spots left -> end game
   else {
-    mainStore.roomStore.runDealerLogic();
-    mainStore.playerSpotsStore.calculateRoundResults();
-    mainStore.roomStore.setRoomState(RoomState.ending);
+    mainStore.roomStore.setRoomState(RoomState.dealerPlaying);
   }
 };
 
