@@ -8,22 +8,26 @@ import {
 } from "mobx";
 import { ICard, RoomState } from "../types/types";
 import { shuffleDeck } from "../utils/utils";
-
 import { clearStoresData, findActiveSpot } from "../utils/gameLogic";
 import { mainStore } from "./MainStore";
+import {
+  DEALING_ANIMATION_DURATION,
+  ROUND_RESTART_WAIT_TIME,
+} from "../utils/consts";
+import { dealCard } from "../utils/buttons";
 
 configure({ enforceActions: "observed" });
 
 //handling everything related to room - state,dealer,deck of cards
 export class RoomStore {
   @observable
-  dealerCards: ICard[] = [];
-
-  @observable
-  deck: ICard[] = [];
+  dealerHand: ICard[] = [];
 
   @observable
   dealerPoints: number = 0;
+
+  @observable
+  deck: ICard[] = [];
 
   @observable
   roomState: RoomState = RoomState.waiting;
@@ -42,16 +46,14 @@ export class RoomStore {
       (newState) => {
         switch (newState) {
           case RoomState.dealing:
-            this.dealerCards = this.takeCards(2);
+            //need to wait for smoother animation (called at useDealerAnimation)
             setTimeout(() => {
               this.setRoomState(RoomState.playing);
-            }, 1700);
+            }, DEALING_ANIMATION_DURATION);
             break;
 
           case RoomState.playing:
-            setTimeout(() => {
-              findActiveSpot();
-            }, 1000);
+            findActiveSpot();
             break;
 
           case RoomState.ending:
@@ -60,13 +62,11 @@ export class RoomStore {
             setTimeout(() => {
               clearStoresData();
               this.setRoomState(RoomState.waiting);
-            }, 3500);
+            }, ROUND_RESTART_WAIT_TIME);
             break;
 
           case RoomState.waiting:
-            setTimeout(() => {
-              this.setRoomState(RoomState.betting);
-            }, 1000);
+            this.setRoomState(RoomState.betting);
             break;
         }
       }
@@ -74,7 +74,7 @@ export class RoomStore {
   }
 
   @action
-  setIsLoaded() {
+  setIsLoading() {
     this.isLoading = false;
   }
 
@@ -96,27 +96,27 @@ export class RoomStore {
   @action
   recalculateDealerPoints() {
     let newPoints: number = 0;
-    if (this.dealerCards.length > 2) {
-      this.dealerCards.forEach((card) => (newPoints += card.value));
+    if (this.dealerHand.length > 2) {
+      this.dealerHand.forEach((card) => (newPoints += card.value));
       this.dealerPoints = newPoints;
-    } else this.dealerPoints = this.dealerCards[0].value;
+    } else this.dealerPoints = this.dealerHand[0].value;
   }
 
+  //hits at 16 and below
   @action
   runDealerLogic(): void {
     setTimeout(() => {
       if (this.dealerPoints <= 16) {
-        const newDealerCards = this.takeCards(1);
-        this.dealerCards = [...this.dealerCards, ...newDealerCards];
+        dealCard(false);
         this.recalculateDealerPoints();
         return this.runDealerLogic();
       }
-    }, 300);
+    }, 1000);
   }
 
   @action
   clear() {
-    this.dealerCards = [];
+    this.dealerHand = [];
     this.dealerPoints = 0;
   }
 }

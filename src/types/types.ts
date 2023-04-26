@@ -15,7 +15,7 @@ export interface ICard {
 }
 
 export interface IRoom {
-  dealerCards: ICard[];
+  dealerHand: ICard[];
   roomState: RoomState;
   deck: ICard[];
 }

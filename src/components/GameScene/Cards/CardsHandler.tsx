@@ -18,7 +18,7 @@ import {
 export const CardsHandler: FC = observer(() => {
   const assetManagerResult = useAssetManager(assetsTask);
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);
-  const dealerCards = mainStore.roomStore.dealerCards;
+  const dealerHand = mainStore.roomStore.dealerHand;
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
 
   useEffect(() => {
@@ -29,23 +29,23 @@ export const CardsHandler: FC = observer(() => {
 
   return cardMesh ? (
     <>
-      {playerSpots.map((playerSpot, spotIndex) =>
-        playerSpot.hand.map((handCard, i) => (
+      {playerSpots.map((playerSpot) =>
+        playerSpot.hand.map((handCard, index) => (
           <Card
-            key={handCard.rank + handCard.suit + i}
+            key={handCard.rank + handCard.suit + playerSpot.index}
             card={cardMesh}
             value={handCard.value}
             suit={handCard.suit}
             rank={handCard.rank}
-            offset={i / 30}
-            position={PLAYER_SPOTS_POSITIONS[spotIndex]}
-            rotation={PLAYER_SPOTS_ROTATION[spotIndex]}
+            offset={index / 30}
+            position={PLAYER_SPOTS_POSITIONS[playerSpot.index]}
+            rotation={PLAYER_SPOTS_ROTATION[playerSpot.index]}
           />
         ))
       )}
 
       {/*dealer cards*/}
-      {dealerCards.map((card, i) => (
+      {dealerHand.map((card, i) => (
         <Card
           key={card.rank + card.suit + i}
           card={cardMesh}
@@ -55,7 +55,7 @@ export const CardsHandler: FC = observer(() => {
           offset={i / 30}
           position={DEALER_SPOT_POSITION}
           rotation={
-            dealerCards.length === 2 && i === 1
+            dealerHand.length === 2 && i === 1
               ? new Vector3(0, 0, Math.PI)
               : Vector3.Zero()
           }

@@ -7,7 +7,7 @@ import { RoomState } from "../../../../types/types";
 import { checkPoints, findActiveSpot } from "../../../../utils/gameLogic";
 import {
   deactivatePlayerSpot,
-  dealCardToPlayerSpot,
+  dealCard,
   recalculatePoints,
 } from "../../../../utils/buttons";
 
@@ -16,7 +16,7 @@ const HitNStandButtons: FC = observer(() => {
   const roomState = mainStore.roomStore.roomState;
 
   const handleHit = useCallback(() => {
-    dealCardToPlayerSpot();
+    dealCard(true);
     recalculatePoints(false);
     checkPoints();
   }, []);

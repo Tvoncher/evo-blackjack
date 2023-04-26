@@ -21,12 +21,11 @@ const DealButton: FC = observer(() => {
             playerSpot.hand = roomStore.takeCards(2);
             mainStore.playerSpotsStore.recalculatePoints(playerSpot.index);
           }
-
-          mainStore.roomStore.dealerCards = roomStore.takeCards(2);
-          mainStore.roomStore.recalculateDealerPoints();
-
-          mainStore.roomStore.setRoomState(RoomState.playing);
         });
+        mainStore.roomStore.dealerHand = roomStore.takeCards(2);
+        mainStore.roomStore.recalculateDealerPoints();
+
+        mainStore.roomStore.setRoomState(RoomState.playing);
       }, 700);
     }
   }, []);

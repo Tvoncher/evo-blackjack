@@ -6,7 +6,7 @@ import {
 } from "../types/types";
 import { Color3 } from "@babylonjs/core/Maths/math";
 
-//babylon points
+// babylon points
 export const CHIP_HEIGHT = 0.01;
 export const CHIP_DIAMETER = 0.06;
 
@@ -75,3 +75,9 @@ const CARDS_SPRITESHEET_WIDTH = 13;
 const CARDS_SPRITESHEET_HEIGHT = 4;
 export const CARD_SPRITE_WIDTH = 1 / CARDS_SPRITESHEET_WIDTH;
 export const CARD_SPRITE_HEIGHT = 1 / CARDS_SPRITESHEET_HEIGHT;
+
+// time in ms you need to wait for smoother animation
+export const DEALING_ANIMATION_DURATION = 1700;
+
+//time in ms you need to wait for auto restart
+export const ROUND_RESTART_WAIT_TIME = 3500;

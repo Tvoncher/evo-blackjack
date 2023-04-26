@@ -13,7 +13,7 @@ const Dealer: FC = observer(() => {
 
   // hiding loading screen when mounted (=== loaded)
   useEffect(() => {
-    mainStore.roomStore.setIsLoaded();
+    mainStore.roomStore.setIsLoading();
   }, []);
 
   return (
