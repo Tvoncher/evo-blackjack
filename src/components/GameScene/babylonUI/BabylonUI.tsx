@@ -9,12 +9,13 @@ import HitNStandButtons from "./HitNStandButtons/HitNStandButtons";
 //handling all UI elements rendered by babylon
 const BabylonUI: FC = observer(() => {
   const roomState = mainStore.roomStore.roomState;
+  const totalBet = mainStore.userStore.user.totalBet;
 
   return (
     <>
       {roomState === RoomState.betting && <ChipsHandler />}
-      <HitNStandButtons />
-      <DealButton />
+      {roomState === RoomState.playing && <HitNStandButtons />}
+      {roomState === RoomState.betting && totalBet > 0 && <DealButton />}
     </>
   );
 });

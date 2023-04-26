@@ -7,8 +7,6 @@ import { Html } from "react-babylonjs";
 const DealButton: FC = observer(() => {
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
   const roomStore = mainStore.roomStore;
-  const totalBet = mainStore.userStore.user.totalBet;
-  const roomState = mainStore.roomStore.roomState;
 
   // dealing cards to each spot with bets and dealer
   const handleDeal = useCallback(() => {
@@ -31,19 +29,15 @@ const DealButton: FC = observer(() => {
   }, []);
 
   return (
-    <>
-      {roomState === RoomState.betting && totalBet > 0 && (
-        <Html name="buttons" center>
-          <div className="ui">
-            <div className="button__container" onClick={handleDeal}>
-              <div className="button deal">
-                <p className="text">DEAL</p>
-              </div>
-            </div>
+    <Html name="buttons" center>
+      <div className="ui">
+        <div className="button__container" onClick={handleDeal}>
+          <div className="button deal">
+            <p className="text">DEAL</p>
           </div>
-        </Html>
-      )}
-    </>
+        </div>
+      </div>
+    </Html>
   );
 });
 export default DealButton;

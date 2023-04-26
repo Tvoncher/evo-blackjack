@@ -78,6 +78,7 @@ export const CARD_SPRITE_HEIGHT = 1 / CARDS_SPRITESHEET_HEIGHT;
 
 // time in ms you need to wait for smoother animation
 export const DEALING_ANIMATION_DURATION = 1700;
+export const ENDING_ANIMATION_DURATION = 1400;
 
 //time in ms you need to wait for auto restart
-export const ROUND_RESTART_WAIT_TIME = 3500;
+export const ROUND_RESTART_WAIT_TIME = 7000;

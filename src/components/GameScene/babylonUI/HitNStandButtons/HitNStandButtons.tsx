@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import { Html } from "react-babylonjs";
 import "./HitNStandButtons.css";
 import { mainStore } from "../../../../stores/MainStore";
-import { RoomState } from "../../../../types/types";
 import { checkPoints, findActiveSpot } from "../../../../utils/gameLogic";
 import {
   deactivatePlayerSpot,
@@ -28,29 +27,25 @@ const HitNStandButtons: FC = observer(() => {
   }, []);
 
   return (
-    <>
-      {roomState === RoomState.playing && (
-        <Html name="buttons" center>
-          <div className="ui">
-            <div className="title text">
-              <h3>MAKE YOUR DECISION</h3>
-            </div>
-            <div className="buttons__container">
-              <div className="button__container" onClick={handleHit}>
-                <div className="button hit">
-                  <p className="text">HIT</p>
-                </div>
-              </div>
-              <div className="button__container" onClick={handleStand}>
-                <div className="button stand">
-                  <p className="text">STAND</p>
-                </div>
-              </div>
+    <Html name="buttons" center>
+      <div className="ui">
+        <div className="title text">
+          <h3>MAKE YOUR DECISION</h3>
+        </div>
+        <div className="buttons__container">
+          <div className="button__container" onClick={handleHit}>
+            <div className="button hit">
+              <p className="text">HIT</p>
             </div>
           </div>
-        </Html>
-      )}
-    </>
+          <div className="button__container" onClick={handleStand}>
+            <div className="button stand">
+              <p className="text">STAND</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Html>
   );
 });
 

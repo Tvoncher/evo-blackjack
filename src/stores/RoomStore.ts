@@ -5,6 +5,7 @@ import { clearStoresData, findActiveSpot } from "../utils/gameLogic";
 import { mainStore } from "./MainStore";
 import {
   DEALING_ANIMATION_DURATION,
+  ENDING_ANIMATION_DURATION,
   ROUND_RESTART_WAIT_TIME,
 } from "../utils/consts";
 import { dealCards } from "../utils/buttons";
@@ -50,7 +51,7 @@ export class RoomStore {
             setTimeout(() => {
               clearStoresData();
               this.setRoomState(RoomState.waiting);
-            }, ROUND_RESTART_WAIT_TIME);
+            }, ROUND_RESTART_WAIT_TIME + ENDING_ANIMATION_DURATION);
             break;
 
           case RoomState.waiting:
@@ -119,7 +120,7 @@ export class RoomStore {
         this.recalculateDealerPoints();
         return this.runDealerLogic();
       }
-    }, 1000);
+    }, 500);
   }
 
   @action

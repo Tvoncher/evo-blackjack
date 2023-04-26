@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { BASE_CAMERA_PARAMS } from "../../../utils/consts";
+import {
+  BASE_CAMERA_PARAMS,
+  ROUND_RESTART_WAIT_TIME,
+} from "../../../utils/consts";
 import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
@@ -21,7 +24,9 @@ const BaseCamera: FC = observer(() => {
   //moving back to initial angles
   if (roomState === RoomState.ending) {
     if (camera) {
-      resetCameraAngles(camera, radius, alpha, beta);
+      setTimeout(() => {
+        resetCameraAngles(camera, radius, alpha, beta);
+      }, ROUND_RESTART_WAIT_TIME);
     }
   }
 

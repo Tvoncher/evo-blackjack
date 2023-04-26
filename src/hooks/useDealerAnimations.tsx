@@ -6,6 +6,7 @@ import { MeshAssetTask } from "@babylonjs/core/Misc/assetsManager";
 import { mainStore } from "../stores/MainStore";
 import { runAnim } from "../utils/utils";
 import { RoomState } from "../types/types";
+import { ROUND_RESTART_WAIT_TIME } from "../utils/consts";
 
 //handling dealer animations
 export const useDealerAnimations = () => {
@@ -45,7 +46,10 @@ export const useDealerAnimations = () => {
         animationDealing.play();
         break;
       case RoomState.ending:
-        animationEnding.play();
+        //need some time to look at cards
+        setTimeout(() => {
+          animationEnding.play();
+        }, ROUND_RESTART_WAIT_TIME);
         break;
     }
   }, [roomState]);
