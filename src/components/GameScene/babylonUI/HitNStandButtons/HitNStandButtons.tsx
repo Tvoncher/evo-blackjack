@@ -16,9 +16,11 @@ const HitNStandButtons: FC = observer(() => {
   const roomState = mainStore.roomStore.roomState;
 
   const handleHit = useCallback(() => {
-    dealCard(true);
+    dealCard("player");
     recalculatePoints(false);
     checkPoints();
+    mainStore.userStore.user.balance++;
+    mainStore.userStore.user.balance += 1;
   }, []);
 
   const handleStand = useCallback(() => {

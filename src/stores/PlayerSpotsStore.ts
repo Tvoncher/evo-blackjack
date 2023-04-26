@@ -1,8 +1,6 @@
-import { action, configure, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { IPlayerSpot, PlayerSpotStatus } from "../types/types";
 import { mainStore } from "./MainStore";
-
-configure({ enforceActions: "observed" });
 
 //handling all playerSpots data
 export class PlayerSpotsStore {

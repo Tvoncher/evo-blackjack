@@ -1,7 +1,6 @@
 import {
   IReactionDisposer,
   action,
-  configure,
   makeObservable,
   observable,
   reaction,
@@ -9,8 +8,6 @@ import {
 import { IUser } from "../types/types";
 import { createNewUser, loadUser } from "../utils/utils";
 import { STARTING_BALANCE } from "../utils/consts";
-
-configure({ enforceActions: "observed" });
 
 export class UserStore {
   @observable

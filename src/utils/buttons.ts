@@ -21,11 +21,11 @@ export const recalculatePoints = (recalcForDealer: boolean) => {
   }
 };
 
-export const dealCard = (targetPlayerSpot: boolean) => {
-  //targetPlayerSpot represents targeted hand - playerSpot f or dealer
+export const dealCard = (target: "player" | "dealer") => {
+  //targetPlayerSpot represents targeted hand - playerSpot or dealer
   const newCard = mainStore.roomStore.takeCards(1);
 
-  if (targetPlayerSpot) {
+  if (target === "player") {
     const index = mainStore.playerSpotsStore.activePlayerSpotIndex;
     if (typeof index === "number") {
       mainStore.playerSpotsStore.playerSpots[index].hand = [

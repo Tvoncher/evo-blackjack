@@ -1,7 +1,6 @@
 import {
   IReactionDisposer,
   action,
-  configure,
   makeObservable,
   observable,
   reaction,
@@ -15,8 +14,6 @@ import {
   ROUND_RESTART_WAIT_TIME,
 } from "../utils/consts";
 import { dealCard } from "../utils/buttons";
-
-configure({ enforceActions: "observed" });
 
 //handling everything related to room - state,dealer,deck of cards
 export class RoomStore {
@@ -107,7 +104,7 @@ export class RoomStore {
   runDealerLogic(): void {
     setTimeout(() => {
       if (this.dealerPoints <= 16) {
-        dealCard(false);
+        dealCard("dealer");
         this.recalculateDealerPoints();
         return this.runDealerLogic();
       }
