@@ -56,7 +56,7 @@ export class RoomStore {
             mainStore.playerSpotsStore.setWinners();
             mainStore.playerSpotsStore.calculateRoundProfits();
             mainStore.playerSpotsStore.calculateTotalWin();
-            mainStore.userStore.setBalance();
+            mainStore.userStore.setBalance(mainStore.userStore.totalWin);
             setTimeout(() => {
               clearStoresData();
               this.setRoomState(RoomState.waiting);

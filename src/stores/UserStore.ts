@@ -45,8 +45,8 @@ export class UserStore {
   }
 
   @action
-  setBalance() {
-    this.user.balance += this.totalWin;
+  setBalance(value: number) {
+    this.user.balance += value;
   }
 
   @action
