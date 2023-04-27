@@ -22,5 +22,5 @@ export const useGreetingAnimation = () => {
     //need to stop initial animation
     animationDealing.stop();
     animationGreeting.play();
-  }, []);
+  }, [assetManagerResult.taskNameMap]);
 };

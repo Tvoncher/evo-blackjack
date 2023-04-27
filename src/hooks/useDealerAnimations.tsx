@@ -52,5 +52,5 @@ export const useDealerAnimations = () => {
         }, ROUND_RESTART_WAIT_TIME);
         break;
     }
-  }, [roomState]);
+  }, [roomState, assetManagerResult.taskNameMap]);
 };

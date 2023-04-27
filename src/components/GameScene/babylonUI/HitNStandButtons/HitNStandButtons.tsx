@@ -2,7 +2,6 @@ import { FC, useCallback } from "react";
 import { observer } from "mobx-react-lite";
 import { Html } from "react-babylonjs";
 import "./HitNStandButtons.css";
-import { mainStore } from "../../../../stores/MainStore";
 import { checkPoints, findActiveSpot } from "../../../../utils/gameLogic";
 import {
   deactivatePlayerSpot,
@@ -12,8 +11,6 @@ import {
 
 //handling hit/stand buttons
 const HitNStandButtons: FC = observer(() => {
-  const roomState = mainStore.roomStore.roomState;
-
   const handleHit = useCallback(() => {
     dealCards("player", 1);
     recalculatePoints(false);

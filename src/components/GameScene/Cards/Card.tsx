@@ -14,9 +14,12 @@ const Card: FC<ICardProps> = ({
   rotation,
   suit,
 }) => {
-  const assignTexture = useCallback((card: AbstractMesh) => {
-    getCardMaterial(card, suit, rank);
-  }, []);
+  const assignTexture = useCallback(
+    (card: AbstractMesh) => {
+      getCardMaterial(card, suit, rank);
+    },
+    [rank, suit]
+  );
 
   // can't create instanced mesh from my glb
   return (
