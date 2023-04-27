@@ -27,7 +27,7 @@ const HitNStandButtons: FC = observer(() => {
   }, []);
 
   return (
-    <Html name="buttons" center>
+    <Html name="buttons" center disposeInstanceOnUnmount>
       <div className="ui">
         <div className="title text">
           <h3>MAKE YOUR DECISION</h3>

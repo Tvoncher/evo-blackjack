@@ -31,7 +31,10 @@ const GameScene: FC = observer(() => {
       <UI />
       {isLoading && <LoadingScreen />}
       <Engine antialias adaptToDeviceRatio className="canvas">
-        <Scene>
+        <Scene
+          blockMaterialDirtyMechanism
+          blockfreeActiveMeshesAndRenderingGroups
+        >
           <BaseCamera />
           <hemisphericLight
             name="light__main"

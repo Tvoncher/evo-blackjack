@@ -5,7 +5,11 @@ import DealerCardsTooltip from "../BabylonUI/DealerCardsTooltip";
 // displaying dealer tooltip
 const DealerSpot: FC = () => {
   return (
-    <transformNode name="dealer__spot" position={DEALER_SPOT_POSITION}>
+    <transformNode
+      name="dealer__spot"
+      position={DEALER_SPOT_POSITION}
+      disposeInstanceOnUnmount
+    >
       <DealerCardsTooltip />
     </transformNode>
   );

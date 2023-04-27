@@ -29,7 +29,7 @@ const DealButton: FC = observer(() => {
   }, []);
 
   return (
-    <Html name="buttons" center>
+    <Html name="buttons" center disposeInstanceOnUnmount>
       <div className="ui">
         <div className="button__container" onClick={handleDeal}>
           <div className="button deal">

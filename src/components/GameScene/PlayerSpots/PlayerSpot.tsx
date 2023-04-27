@@ -51,6 +51,7 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
           diameter={PLAYER_SPOT_DIAMETER}
           position={position}
           isVisible={roomState === RoomState.betting}
+          disposeInstanceOnUnmount
         >
           <CardsTooltip
             points={points}

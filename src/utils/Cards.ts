@@ -70,6 +70,7 @@ export const getCardMaterial = (
 
   cardMaterial.diffuseTexture = cardFrontTexture;
   cardMaterial.bumpTexture = cardBumpTexture;
+  cardMaterial.freeze();
 
   if (card) {
     card.getChildMeshes()[0].material = cardMaterial;

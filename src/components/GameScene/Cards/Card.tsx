@@ -33,6 +33,7 @@ const Card: FC<ICardProps> = ({
       rotation={rotation}
       scaling={CARD_SCALING}
       onCreated={assignTexture}
+      isPickable={false}
       disposeInstanceOnUnmount
     />
   );

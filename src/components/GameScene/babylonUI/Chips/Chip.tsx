@@ -31,6 +31,7 @@ const Chip: FC<IChipProps> = observer(({ name, position }) => {
         diameter={CHIP_DIAMETER}
         position={position}
         onCreated={handleActions}
+        disposeInstanceOnUnmount
       >
         <standardMaterial
           name={`chip${name}__material`}
@@ -46,6 +47,7 @@ const Chip: FC<IChipProps> = observer(({ name, position }) => {
           height={CHIP_HEIGHT / 2}
           diameter={CHIP_DIAMETER}
           position={position}
+          disposeInstanceOnUnmount
         >
           <standardMaterial
             name="highlighting__material"

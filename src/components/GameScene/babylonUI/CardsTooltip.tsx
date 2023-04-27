@@ -15,7 +15,7 @@ const CardsTooltip: FC<ICardsTooltip> = ({ points, roundWinningStatus }) => {
   return (
     <>
       {roomState !== RoomState.ending && points > 0 && (
-        <Html name="html">
+        <Html name="html" disposeInstanceOnUnmount>
           {
             <div
               style={{

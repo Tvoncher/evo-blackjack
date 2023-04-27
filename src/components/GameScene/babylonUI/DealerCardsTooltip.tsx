@@ -10,7 +10,7 @@ const DealerCardsTooltip: FC = observer(() => {
   return (
     <>
       {dealerPoints > 0 && (
-        <Html name="html">
+        <Html name="html" disposeInstanceOnUnmount>
           {
             <div
               style={{
