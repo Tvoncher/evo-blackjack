@@ -6,10 +6,12 @@ import { RoomStore } from "./RoomStore";
 
 //handling all stores together
 configure({ enforceActions: "always" });
-class MainStore {
+export class MainStore {
   @observable
   playerSpotsStore = new PlayerSpotsStore();
+  @observable
   roomStore = new RoomStore();
+  @observable
   userStore = new UserStore();
 
   constructor() {
@@ -18,4 +20,4 @@ class MainStore {
 }
 
 export const mainStore = new MainStore();
-export const MainStoreContext = createContext<MainStore | null>(null);
+export const MainStoreContext = createContext<MainStore>(mainStore);

@@ -40,7 +40,7 @@ export enum PlayerSpotStatus {
   inactive = "inactive",
 }
 
-export enum roundWinningStatus {
+export enum endgameStatus {
   win = "win",
   lose = "lose",
   tie = "tie",
@@ -54,7 +54,7 @@ export interface IPlayerSpot {
   status: PlayerSpotStatus;
   index: number;
   roundProfit: number;
-  roundWinningStatus: roundWinningStatus;
+  endgameStatus: endgameStatus;
 }
 
 export interface IBaseCameraParams {
@@ -95,6 +95,6 @@ export interface IPlayerSpotProps {
   position: Vector3;
   rotation: Vector3;
   index: number;
-  roundWinningStatus: roundWinningStatus;
+  endgameStatus: endgameStatus;
   status: PlayerSpotStatus;
 }

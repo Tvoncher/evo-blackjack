@@ -1,15 +1,15 @@
 import { FC } from "react";
 import { mainStore } from "../../../stores/MainStore";
-import { RoomState, roundWinningStatus } from "../../../types/types";
+import { RoomState, endgameStatus } from "../../../types/types";
 import { Html } from "react-babylonjs";
 
 interface ICardsTooltip {
   points: number;
-  roundWinningStatus: roundWinningStatus;
+  endgameStatus: endgameStatus;
 }
 
 // small tooltip displaying points / win / lose
-const CardsTooltip: FC<ICardsTooltip> = ({ points, roundWinningStatus }) => {
+const CardsTooltip: FC<ICardsTooltip> = ({ points, endgameStatus }) => {
   const roomState = mainStore.roomStore.roomState;
 
   return (
@@ -52,7 +52,7 @@ const CardsTooltip: FC<ICardsTooltip> = ({ points, roundWinningStatus }) => {
                 right: "50px",
               }}
             >
-              {roundWinningStatus}
+              {endgameStatus}
             </div>
           }
         </Html>

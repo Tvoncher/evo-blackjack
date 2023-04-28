@@ -1,9 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
-import {
-  IPlayerSpot,
-  PlayerSpotStatus,
-  roundWinningStatus,
-} from "../types/types";
+import { IPlayerSpot, PlayerSpotStatus, endgameStatus } from "../types/types";
 import { mainStore } from "./MainStore";
 
 //handling all playerSpots data
@@ -18,7 +14,7 @@ export class PlayerSpotsStore {
       points: 0,
       previousBet: 0,
       roundProfit: 0,
-      roundWinningStatus: roundWinningStatus.lose,
+      endgameStatus: endgameStatus.lose,
     },
     {
       hand: [],
@@ -28,7 +24,7 @@ export class PlayerSpotsStore {
       points: 0,
       previousBet: 0,
       roundProfit: 0,
-      roundWinningStatus: roundWinningStatus.lose,
+      endgameStatus: endgameStatus.lose,
     },
     {
       hand: [],
@@ -38,7 +34,7 @@ export class PlayerSpotsStore {
       points: 0,
       previousBet: 0,
       roundProfit: 0,
-      roundWinningStatus: roundWinningStatus.lose,
+      endgameStatus: endgameStatus.lose,
     },
     {
       hand: [],
@@ -48,7 +44,7 @@ export class PlayerSpotsStore {
       points: 0,
       previousBet: 0,
       roundProfit: 0,
-      roundWinningStatus: roundWinningStatus.lose,
+      endgameStatus: endgameStatus.lose,
     },
     {
       hand: [],
@@ -58,7 +54,7 @@ export class PlayerSpotsStore {
       points: 0,
       previousBet: 0,
       roundProfit: 0,
-      roundWinningStatus: roundWinningStatus.lose,
+      endgameStatus: endgameStatus.lose,
     },
   ];
 
@@ -131,18 +127,18 @@ export class PlayerSpotsStore {
   @action
   calculateRoundProfits() {
     this.playerSpots.forEach((playerSpot) => {
-      const spotWinningStatus = playerSpot.roundWinningStatus;
+      const spotWinningStatus = playerSpot.endgameStatus;
 
       switch (spotWinningStatus) {
-        case roundWinningStatus.win:
-          playerSpot.roundProfit += playerSpot.previousBet;
+        case endgameStatus.win:
+          playerSpot.roundProfit = playerSpot.previousBet * 2;
           break;
 
-        case roundWinningStatus.lose:
+        case endgameStatus.lose:
           playerSpot.roundProfit -= playerSpot.previousBet;
           break;
 
-        case roundWinningStatus.tie:
+        case endgameStatus.tie:
           playerSpot.roundProfit = playerSpot.previousBet;
           break;
       }
@@ -150,21 +146,19 @@ export class PlayerSpotsStore {
   }
 
   @action
-  setWinners() {
-    const dealerPoints = mainStore.roomStore.dealerPoints;
+  setEndgameStatuses(dealerPoints: number) {
     this.playerSpots.forEach((playerSpot) => {
       const spotPoints = playerSpot.points;
-
       if (spotPoints > 21) {
-        playerSpot.roundWinningStatus = roundWinningStatus.lose;
+        playerSpot.endgameStatus = endgameStatus.lose;
       } else if (dealerPoints > 21) {
-        playerSpot.roundWinningStatus = roundWinningStatus.win;
+        playerSpot.endgameStatus = endgameStatus.win;
       } else if (spotPoints > dealerPoints) {
-        playerSpot.roundWinningStatus = roundWinningStatus.win;
+        playerSpot.endgameStatus = endgameStatus.win;
       } else if (spotPoints < dealerPoints) {
-        playerSpot.roundWinningStatus = roundWinningStatus.lose;
+        playerSpot.endgameStatus = endgameStatus.lose;
       } else {
-        playerSpot.roundWinningStatus = roundWinningStatus.tie;
+        playerSpot.endgameStatus = endgameStatus.tie;
       }
     });
   }
@@ -176,7 +170,8 @@ export class PlayerSpotsStore {
       playerSpot.hand = [];
       playerSpot.points = 0;
       playerSpot.roundProfit = 0;
-      playerSpot.roundWinningStatus = roundWinningStatus.lose;
+      playerSpot.endgameStatus = endgameStatus.lose;
     });
+    this.activePlayerSpotIndex = undefined;
   }
 }

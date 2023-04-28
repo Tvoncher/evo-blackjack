@@ -53,10 +53,12 @@ export class RoomStore {
             break;
 
           case RoomState.ending:
-            mainStore.playerSpotsStore.setWinners();
+            mainStore.playerSpotsStore.setEndgameStatuses(
+              mainStore.roomStore.dealerPoints
+            );
             mainStore.playerSpotsStore.calculateRoundProfits();
             mainStore.playerSpotsStore.calculateTotalWin();
-            mainStore.userStore.setBalance(mainStore.userStore.totalWin);
+            mainStore.userStore.addToBalance(mainStore.userStore.totalWin);
             setTimeout(() => {
               clearStoresData();
               this.setRoomState(RoomState.waiting);
@@ -102,26 +104,22 @@ export class RoomStore {
 
   @action
   recalculateDealerPoints() {
-    if (this.dealerHand.length > 2) {
-      let newPoints: number = 0;
-      let aces: number = 0;
+    let newPoints: number = 0;
+    let aces: number = 0;
 
-      this.dealerHand.forEach((card) => {
-        if (card.rank === "A") {
-          aces++;
-          newPoints += 11;
-        } else newPoints += card.value;
-      });
+    this.dealerHand.forEach((card) => {
+      if (card.rank === "A") {
+        aces++;
+        newPoints += 11;
+      } else newPoints += card.value;
+    });
 
-      for (let i = 0; i < aces; i++) {
-        if (newPoints > 21) {
-          newPoints -= 10;
-        }
+    for (let i = 0; i < aces; i++) {
+      if (newPoints > 21) {
+        newPoints -= 10;
       }
-      this.dealerPoints = newPoints;
     }
-    //hiding second card value at the beginning
-    else this.dealerPoints = this.dealerHand[0].value;
+    this.dealerPoints = newPoints;
   }
 
   //dealer hits at 16 and below
