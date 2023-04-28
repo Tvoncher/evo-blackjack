@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./Greeting.css";
+import "./GreetingScreen.css";
 import { useAuth } from "../../hooks/useAuth";
 
 interface GreetingProps {
@@ -7,7 +7,7 @@ interface GreetingProps {
 }
 
 // showing greeting screen and starting game
-const Greeting: FC<GreetingProps> = ({ setIsStarted }) => {
+const GreetingScreen: FC<GreetingProps> = ({ setIsStarted }) => {
   const handleAuth = useAuth(setIsStarted);
 
   return (
@@ -20,4 +20,4 @@ const Greeting: FC<GreetingProps> = ({ setIsStarted }) => {
   );
 };
 
-export default Greeting;
+export default GreetingScreen;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import GameScene from "../GameScene/GameScene";
-import Greeting from "../Greeting/Greeting";
+import GreetingScreen from "../GreetingScrene/GreetingScreen";
 import "./App.css";
 import { MainStoreContext, mainStore } from "../../stores/MainStore";
 
@@ -10,7 +10,11 @@ function App() {
   return (
     <MainStoreContext.Provider value={mainStore}>
       <div className="app">
-        {isStarted ? <GameScene /> : <Greeting setIsStarted={setIsStarted} />}
+        {isStarted ? (
+          <GameScene />
+        ) : (
+          <GreetingScreen setIsStarted={setIsStarted} />
+        )}
       </div>
     </MainStoreContext.Provider>
   );

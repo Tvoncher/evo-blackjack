@@ -2,8 +2,7 @@ import { useScene } from "react-babylonjs";
 import { PlayerSpotStatus } from "../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Animation } from "@babylonjs/core/Animations";
-
-const baseCameraAngle = Math.PI / 2;
+import { BASE_CAMERA_PARAMS } from "../utils/consts";
 
 export const usePlayerSpotCamera = (
   status: PlayerSpotStatus,
@@ -19,7 +18,7 @@ export const usePlayerSpotCamera = (
       45,
       60,
       camera.alpha,
-      baseCameraAngle + Math.sin(-rotationY / 1.4),
+      BASE_CAMERA_PARAMS.alpha + Math.sin(-rotationY / 1.4),
       Animation.ANIMATIONLOOPMODE_CONSTANT
     );
 
