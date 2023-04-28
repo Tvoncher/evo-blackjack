@@ -15,7 +15,7 @@ import {
 } from "../../../utils/consts";
 import { RoomState } from "../../../types/types";
 
-// displaying cards
+// receiving arrays with player/dealer cards and displaying them
 export const CardsHandler: FC = observer(() => {
   const assetManagerResult = useAssetManager(assetsTask);
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);

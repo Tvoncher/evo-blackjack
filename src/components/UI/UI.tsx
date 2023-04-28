@@ -5,7 +5,7 @@ import { RoomState } from "../../types/types";
 import WinLossPopup from "./WinLossPopup/WinLossPopup";
 import BalanceAndBet from "./BalanceAndBet/BalanceAndBet";
 
-//handling all ui elements (except of babylon js based)
+//handling all ui elements (except of babylonjs based)
 const UI: FC = observer(() => {
   const context = useContext(MainStoreContext);
   const roomState = context?.roomStore.roomState;

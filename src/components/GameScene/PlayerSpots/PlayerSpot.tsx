@@ -13,6 +13,7 @@ import {
 } from "../../../utils/consts";
 import { placeBetOnPlayerSpot } from "../../../utils/playerSpot";
 
+//playerSpot itself
 const PlayerSpot: FC<IPlayerSpotProps> = observer(
   ({ points, position, rotation, status, index, endgameStatus }) => {
     const [playerSpotChips, setPlayerSpotChip] = useState<number[]>([]);

@@ -7,6 +7,7 @@ import {
   PLAYER_SPOTS_POSITIONS,
 } from "../../../utils/consts";
 
+//receiving array of all spots and creating spot meshes for each
 const PlayerSpotsHandler: FC = observer(() => {
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
 

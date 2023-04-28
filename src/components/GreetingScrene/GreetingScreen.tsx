@@ -1,10 +1,7 @@
 import { FC } from "react";
 import "./GreetingScreen.css";
 import { useAuth } from "../../hooks/useAuth";
-
-interface GreetingProps {
-  setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { GreetingProps } from "../../types/types";
 
 // showing greeting screen and starting game
 const GreetingScreen: FC<GreetingProps> = ({ setIsStarted }) => {

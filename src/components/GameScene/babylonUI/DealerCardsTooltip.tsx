@@ -3,7 +3,7 @@ import { mainStore } from "../../../stores/MainStore";
 import { Html } from "react-babylonjs";
 import { observer } from "mobx-react-lite";
 
-// small tooltip displaying points / win / lose
+// small tooltip displaying dealer points
 const DealerCardsTooltip: FC = observer(() => {
   const dealerPoints = mainStore.roomStore.dealerPoints;
   const dealerHand = mainStore.roomStore.dealerHand;

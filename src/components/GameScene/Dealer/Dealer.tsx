@@ -6,7 +6,8 @@ import { useDealerAnimations } from "../../../hooks/useDealerAnimations";
 import { observer } from "mobx-react-lite";
 import { useGreetingAnimation } from "../../../hooks/useGreetingAnimation";
 
-//showing dealer animations and table (only because of my poor modelling skills)
+/* showing dealer animations and table (they r connected only because of my poor modelling skills)
+in future it's better to use separate meshes */
 const Dealer: FC = observer(() => {
   useGreetingAnimation();
   useDealerAnimations();

@@ -1,12 +1,7 @@
 import { FC } from "react";
 import { mainStore } from "../../../stores/MainStore";
-import { RoomState, endgameStatus } from "../../../types/types";
+import { ICardsTooltip, RoomState } from "../../../types/types";
 import { Html } from "react-babylonjs";
-
-interface ICardsTooltip {
-  points: number;
-  endgameStatus: endgameStatus;
-}
 
 // small tooltip displaying points / win / lose
 const CardsTooltip: FC<ICardsTooltip> = ({ points, endgameStatus }) => {

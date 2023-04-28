@@ -1,7 +1,6 @@
 import { MeshTask, TaskType } from "react-babylonjs";
 
-//creating asset tasks for meshes
-
+//creating asset task for meshes. Use it whenever you want to download something big
 export const assetsTask: MeshTask[] = [
   {
     taskType: TaskType.Mesh,

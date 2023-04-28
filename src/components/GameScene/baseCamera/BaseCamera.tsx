@@ -10,6 +10,7 @@ import { observer } from "mobx-react-lite";
 import { useScene } from "react-babylonjs";
 import { resetCameraAngles } from "../../../utils/baseCamera";
 
+//base (and only rn) camera config
 const BaseCamera: FC = observer(() => {
   const { alpha, beta, radius, target, minZ } = BASE_CAMERA_PARAMS;
 

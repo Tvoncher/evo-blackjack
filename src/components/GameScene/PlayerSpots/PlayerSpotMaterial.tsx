@@ -1,10 +1,7 @@
 import { Texture } from "@babylonjs/core/Materials/Textures/texture";
 import { Color3 } from "@babylonjs/core/Maths/math";
 import { FC } from "react";
-
-interface IPlayerSpotMaterialProps {
-  playerSpotChipsLength: number;
-}
+import { IPlayerSpotMaterialProps } from "../../../types/types";
 
 const PlayerSpotMaterial: FC<IPlayerSpotMaterialProps> = ({
   playerSpotChipsLength,
@@ -12,7 +9,7 @@ const PlayerSpotMaterial: FC<IPlayerSpotMaterialProps> = ({
   const playerSpotTexture: Texture = new Texture(
     "textures/playerSpot/playerSpot.png"
   );
-  playerSpotTexture.hasAlpha = true; // need it to use as alpha
+  playerSpotTexture.hasAlpha = true; // need it to use as alpha (makes mesh geometry invisible)
 
   return (
     <standardMaterial

@@ -57,6 +57,19 @@ export interface IPlayerSpot {
   endgameStatus: endgameStatus;
 }
 
+export interface ICardsTooltip {
+  points: number;
+  endgameStatus: endgameStatus;
+}
+
+export interface GreetingProps {
+  setIsStarted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IPlayerSpotMaterialProps {
+  playerSpotChipsLength: number;
+}
+
 export interface IBaseCameraParams {
   alpha: number;
   beta: number;
