@@ -1,29 +1,6 @@
-import { ICard, RoomState } from "../../types/types";
-import { DEALING_ANIMATION_DURATION } from "../../utils/consts";
-import { MainStore } from "../MainStore";
-
-const dummyCards: ICard[] = [
-  {
-    suit: "hearts",
-    rank: "A",
-    value: 11,
-  },
-  {
-    suit: "diamonds",
-    rank: 10,
-    value: 10,
-  },
-  {
-    suit: "clubs",
-    rank: "A",
-    value: 11,
-  },
-  {
-    suit: "clubs",
-    rank: 3,
-    value: 3,
-  },
-];
+import { RoomState } from "../types/types";
+import { MainStore } from "../stores/MainStore";
+import { dummyCards } from "../utils/utils";
 
 describe("roomStore", () => {
   const mainStore = new MainStore();

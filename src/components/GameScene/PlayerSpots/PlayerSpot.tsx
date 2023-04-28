@@ -23,7 +23,7 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
     useClick(() => {
       const selectedBet = mainStore.userStore.selectedChip;
       if (selectedBet > 0) {
-        placeBetOnPlayerSpot(index, selectedBet);
+        placeBetOnPlayerSpot(mainStore, index, selectedBet);
 
         //need it to render chips on playerSpot
         setPlayerSpotChip(() => [...playerSpotChips, selectedBet]);

@@ -1,5 +1,5 @@
 import { mainStore } from "../stores/MainStore";
-import { IUser, RoomState } from "../types/types";
+import { ICard, IUser, RoomState } from "../types/types";
 import { STARTING_BALANCE } from "./consts";
 import { AnimationGroup } from "@babylonjs/core/Animations/animationGroup";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
@@ -78,6 +78,40 @@ export const loadUser = (userData: string) => {
     balance: parsedData.balance,
   };
 };
+
+//need this for tests
+export const dummyCards: ICard[] = [
+  {
+    suit: "hearts",
+    rank: "A",
+    value: 11,
+  },
+  {
+    suit: "diamonds",
+    rank: 10,
+    value: 10,
+  },
+  {
+    suit: "clubs",
+    rank: "A",
+    value: 11,
+  },
+  {
+    suit: "clubs",
+    rank: 3,
+    value: 3,
+  },
+  {
+    suit: "hearts",
+    rank: 5,
+    value: 5,
+  },
+  {
+    suit: "hearts",
+    rank: 6,
+    value: 6,
+  },
+];
 
 export const initialDeck = [
   {

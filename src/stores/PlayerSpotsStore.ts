@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 import { IPlayerSpot, PlayerSpotStatus, endgameStatus } from "../types/types";
-import { mainStore } from "./MainStore";
+import { MainStore, mainStore } from "./MainStore";
 
 //handling all playerSpots data
 export class PlayerSpotsStore {
@@ -116,7 +116,7 @@ export class PlayerSpotsStore {
   }
 
   @action
-  calculateTotalWin() {
+  calculateTotalWin(mainStore: MainStore) {
     let totalWin: number = 0;
     this.playerSpots.forEach((playerSpot) => {
       totalWin += playerSpot.roundProfit;

@@ -1,6 +1,10 @@
-import { mainStore } from "../stores/MainStore";
+import { MainStore } from "../stores/MainStore";
 
-export const placeBetOnPlayerSpot = (index: number, selectedBet: number) => {
+export const placeBetOnPlayerSpot = (
+  mainStore: MainStore,
+  index: number,
+  selectedBet: number
+) => {
   //setting totalBet (displayed on bottom)
   mainStore.userStore.addToTotalBet(selectedBet);
   //placing bet for this playerSpot

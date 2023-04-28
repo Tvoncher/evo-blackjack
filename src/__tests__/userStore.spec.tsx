@@ -1,6 +1,6 @@
-import { IUser } from "../../types/types";
-import { STARTING_BALANCE } from "../../utils/consts";
-import { MainStore } from "../MainStore";
+import { IUser } from "../types/types";
+import { STARTING_BALANCE } from "../utils/consts";
+import { MainStore } from "../stores/MainStore";
 
 describe("userStore", () => {
   const mainStore = new MainStore();

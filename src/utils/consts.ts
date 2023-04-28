@@ -2,6 +2,7 @@ import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import {
   IBaseCameraParams,
   IBaseLightParams,
+  ICard,
   IChipProps,
 } from "../types/types";
 import { Color3 } from "@babylonjs/core/Maths/math";

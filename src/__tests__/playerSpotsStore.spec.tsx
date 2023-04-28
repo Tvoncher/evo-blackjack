@@ -1,29 +1,8 @@
-import { MainStore } from "../MainStore";
-import { ICard, endgameStatus } from "../../types/types";
-import { PlayerSpotStatus } from "../../types/types";
-
-const dummyCards: ICard[] = [
-  {
-    suit: "hearts",
-    rank: "A",
-    value: 11,
-  },
-  {
-    suit: "diamonds",
-    rank: 10,
-    value: 10,
-  },
-  {
-    suit: "clubs",
-    rank: "A",
-    value: 11,
-  },
-  {
-    suit: "clubs",
-    rank: 3,
-    value: 3,
-  },
-];
+import { MainStore } from "../stores/MainStore";
+import { endgameStatus } from "../types/types";
+import { PlayerSpotStatus } from "../types/types";
+import { dummyCards } from "../utils/utils";
+import { placeBetOnPlayerSpot } from "../utils/playerSpot";
 
 describe("playerSpot store", () => {
   const mainStore = new MainStore();
@@ -159,5 +138,13 @@ describe("playerSpot store", () => {
     playerSpotsStore.playerSpots[0].endgameStatus = endgameStatus.tie;
     playerSpotsStore.calculateRoundProfits();
     expect(playerSpotsStore.playerSpots[0].roundProfit).toBe(100);
+  });
+
+  it("should correctly set bets", () => {
+    placeBetOnPlayerSpot(mainStore, 0, 100);
+    placeBetOnPlayerSpot(mainStore, 1, 50);
+
+    expect(mainStore.playerSpotsStore.playerSpots[0].bet).toBe(100);
+    expect(mainStore.playerSpotsStore.playerSpots[1].bet).toBe(50);
   });
 });
