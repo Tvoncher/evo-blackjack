@@ -5,7 +5,6 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { useAssetManager } from "react-babylonjs";
 import Card from "./Card";
 import { observer } from "mobx-react-lite";
-import { mainStore } from "../../../stores/MainStore";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import {
   DEALER_SPOT_POSITION,
@@ -14,14 +13,15 @@ import {
   ROTATED_CARD_VECTOR,
 } from "../../../utils/consts";
 import { RoomState } from "../../../types/types";
+import { useMainStore } from "../../../hooks/useMainStore";
 
 // receiving arrays with player/dealer cards and displaying them
 export const CardsHandler: FC = observer(() => {
   const assetManagerResult = useAssetManager(assetsTask);
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);
-  const dealerHand = mainStore.roomStore.dealerHand;
-  const playerSpots = mainStore.playerSpotsStore.playerSpots;
-  const roomState = mainStore.roomStore.roomState;
+
+  const { dealerHand, roomState } = useMainStore().roomStore;
+  const { playerSpots } = useMainStore().playerSpotsStore;
 
   useEffect(() => {
     const cardTask = assetManagerResult.taskNameMap["card"] as MeshAssetTask;
@@ -67,4 +67,3 @@ export const CardsHandler: FC = observer(() => {
     </>
   ) : null;
 });
-//roomState !== RoomState.dealerPlaying || (dealerHand.length === 2 && i === 2);

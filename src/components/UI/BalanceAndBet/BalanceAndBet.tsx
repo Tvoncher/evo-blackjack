@@ -1,11 +1,10 @@
 import { FC } from "react";
-import { IUser } from "../../../types/types";
-import { mainStore } from "../../../stores/MainStore";
 import "./BalanceAndBet.css";
 import { observer } from "mobx-react-lite";
+import { useMainStore } from "../../../hooks/useMainStore";
 
 const BalanceAndBet: FC = observer(() => {
-  const { balance, totalBet } = mainStore.userStore.user as IUser;
+  const { balance, totalBet } = useMainStore().userStore.user;
   return (
     <div className="balance_bet">
       <div className="balance_bet__frame">

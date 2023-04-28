@@ -3,18 +3,18 @@ import {
   BASE_CAMERA_PARAMS,
   ROUND_RESTART_WAIT_TIME,
 } from "../../../utils/consts";
-import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { observer } from "mobx-react-lite";
 import { useScene } from "react-babylonjs";
 import { resetCameraAngles } from "../../../utils/baseCamera";
+import { useMainStore } from "../../../hooks/useMainStore";
 
-//base (and only rn) camera config
+//base (and only right now) camera config
 const BaseCamera: FC = observer(() => {
   const { alpha, beta, radius, target, minZ } = BASE_CAMERA_PARAMS;
+  const { roomState } = useMainStore().roomStore;
 
-  const roomState = mainStore.roomStore.roomState;
   const scene = useScene();
   const camera = scene!.cameras[0] as ArcRotateCamera;
   //disabling users ability to rotate cam angles

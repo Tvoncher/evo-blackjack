@@ -12,12 +12,13 @@ import {
   PLAYER_SPOT_HEIGHT,
 } from "../../../utils/consts";
 import { placeBetOnPlayerSpot } from "../../../utils/playerSpot";
+import { useMainStore } from "../../../hooks/useMainStore";
 
 //playerSpot itself
 const PlayerSpot: FC<IPlayerSpotProps> = observer(
   ({ points, position, rotation, status, index, endgameStatus }) => {
     const [playerSpotChips, setPlayerSpotChip] = useState<number[]>([]);
-    const roomState = mainStore.roomStore.roomState;
+    const { roomState } = useMainStore().roomStore;
     const playerSpotRef = useRef(null);
 
     //adding chips on spot
@@ -65,6 +66,7 @@ const PlayerSpot: FC<IPlayerSpotProps> = observer(
             key={chip + i + Date.now()}
             position={position}
             chip={chip}
+            roomState={roomState}
           />
         ))}
       </>

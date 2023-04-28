@@ -106,7 +106,6 @@ export class RoomStore {
   recalculateDealerPoints() {
     let newPoints: number = 0;
     let aces: number = 0;
-    console.log(this.dealerPoints, "initial");
     this.dealerHand.forEach((card) => {
       if (card.rank === "A") {
         aces++;
@@ -120,7 +119,6 @@ export class RoomStore {
       }
     }
     this.dealerPoints = newPoints;
-    console.log(this.dealerPoints, "new");
   }
 
   //dealer hits at 16 and below

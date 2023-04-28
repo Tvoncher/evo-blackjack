@@ -2,11 +2,13 @@ import { FC } from "react";
 import { CHIP_DIAMETER, CHIP_HEIGHT } from "../../../utils/consts";
 import { Texture } from "@babylonjs/core";
 import { IPlayerSpotChipProps, RoomState } from "../../../types/types";
-import { mainStore } from "../../../stores/MainStore";
 
 //creates chip that u can put on playerSpot
-const PlayerSpotChip: FC<IPlayerSpotChipProps> = ({ chip, position }) => {
-  const roomState = mainStore.roomStore.roomState;
+const PlayerSpotChip: FC<IPlayerSpotChipProps> = ({
+  chip,
+  position,
+  roomState,
+}) => {
   const bumpTexture: Texture = new Texture("textures/chips/bumpTexture.png");
 
   return (

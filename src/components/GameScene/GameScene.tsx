@@ -1,9 +1,8 @@
-import { FC, Suspense, useContext, useEffect } from "react";
+import { FC, Suspense, useEffect } from "react";
 import { Engine, Scene } from "react-babylonjs";
 import "./GameScene.css";
-import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import LoadingScreen from "../UI/LoadingScreen/LoadingScreen";
 import { CardsHandler } from "./Cards/CardsHandler";
-import { MainStoreContext } from "../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import PlayerSpotsHandler from "./PlayerSpots/PlayerSpotsHandler";
 import Dealer from "./Dealer/Dealer";
@@ -12,14 +11,13 @@ import { BASE_LIGHT_PARAMS } from "../../utils/consts";
 import { startGame } from "../../utils/utils";
 import DealerSpot from "./DealerSpot/DealerSpot";
 import BaseCamera from "./baseCamera/BaseCamera";
-import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import BabylonUI from "./BabylonUI/BabylonUI";
+import { useMainStore } from "../../hooks/useMainStore";
+import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 
 // handling everything connected with babylonjs
 const GameScene: FC = observer(() => {
-  const context = useContext(MainStoreContext);
-  const isLoading = context?.roomStore.isLoading;
-
+  const { isLoading } = useMainStore().roomStore;
   const { intensity, direction } = BASE_LIGHT_PARAMS;
 
   useEffect(() => {

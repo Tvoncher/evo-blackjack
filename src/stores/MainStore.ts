@@ -8,11 +8,11 @@ import { RoomStore } from "./RoomStore";
 configure({ enforceActions: "always" });
 export class MainStore {
   @observable
-  playerSpotsStore = new PlayerSpotsStore();
+  playerSpotsStore: PlayerSpotsStore = new PlayerSpotsStore();
   @observable
-  roomStore = new RoomStore();
+  roomStore: RoomStore = new RoomStore();
   @observable
-  userStore = new UserStore();
+  userStore: UserStore = new UserStore();
 
   constructor() {
     makeObservable(this);

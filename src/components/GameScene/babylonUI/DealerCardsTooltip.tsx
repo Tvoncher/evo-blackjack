@@ -1,12 +1,11 @@
 import { FC } from "react";
-import { mainStore } from "../../../stores/MainStore";
 import { Html } from "react-babylonjs";
 import { observer } from "mobx-react-lite";
+import { useMainStore } from "../../../hooks/useMainStore";
 
 // small tooltip displaying dealer points
 const DealerCardsTooltip: FC = observer(() => {
-  const dealerPoints = mainStore.roomStore.dealerPoints;
-  const dealerHand = mainStore.roomStore.dealerHand;
+  const { dealerPoints, dealerHand } = useMainStore().roomStore;
 
   return (
     <>

@@ -81,6 +81,7 @@ export interface IBaseCameraParams {
 export interface IPlayerSpotChipProps {
   chip: number;
   position: Vector3;
+  roomState: RoomState;
 }
 
 export interface ICardProps {

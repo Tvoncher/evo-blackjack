@@ -37,7 +37,7 @@ export const getCardMaterial = (
 
       break;
     default:
-      console.log(`something wrong with suit: ${suit}`);
+      throw new Error(`something wrong with suit: ${suit}`);
   }
 
   // now accessing proper column

@@ -6,16 +6,16 @@ import {
   CHIP_HEIGHT,
   CHIP_HIGHLIGHTING_COLOR,
 } from "../../../../utils/consts";
-import { mainStore } from "../../../../stores/MainStore";
 import { observer } from "mobx-react-lite";
 import { registerChipActions } from "../../../../utils/utils";
+import { useMainStore } from "../../../../hooks/useMainStore";
 
 // rendering chip and highlighting it
 const Chip: FC<IChipProps> = observer(({ name, position }) => {
   const diffuseTexture: Texture = new Texture(`textures/chips/chip${name}.png`);
   const bumpTexture: Texture = new Texture("textures/chips/bumpTexture.png");
 
-  const selectedChip = mainStore.userStore.selectedChip;
+  const { selectedChip } = useMainStore().userStore;
 
   //register actions like onClick,onHover for mesh
   const handleActions = useCallback((chip: Mesh) => {

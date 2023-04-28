@@ -1,9 +1,9 @@
 import { FC } from "react";
 import "./WinLossPopup.css";
-import { mainStore } from "../../../stores/MainStore";
+import { useMainStore } from "../../../hooks/useMainStore";
 
 const WinLossPopup: FC = () => {
-  const totalWin = mainStore.userStore.totalWin;
+  const { totalWin } = useMainStore().userStore;
 
   return (
     <div className="win-loss">

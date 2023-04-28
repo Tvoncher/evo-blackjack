@@ -1,14 +1,13 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { observer } from "mobx-react-lite";
-import { MainStoreContext } from "../../stores/MainStore";
 import { RoomState } from "../../types/types";
 import WinLossPopup from "./WinLossPopup/WinLossPopup";
 import BalanceAndBet from "./BalanceAndBet/BalanceAndBet";
+import { useMainStore } from "../../hooks/useMainStore";
 
 //handling all ui elements (except of babylonjs based)
 const UI: FC = observer(() => {
-  const context = useContext(MainStoreContext);
-  const roomState = context?.roomStore.roomState;
+  const { roomState } = useMainStore().roomStore;
   return (
     <>
       <BalanceAndBet />

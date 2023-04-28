@@ -3,10 +3,11 @@ import { mainStore } from "../../../stores/MainStore";
 import { RoomState } from "../../../types/types";
 import { observer } from "mobx-react-lite";
 import { Html } from "react-babylonjs";
+import { useMainStore } from "../../../hooks/useMainStore";
 
 const DealButton: FC = observer(() => {
-  const playerSpots = mainStore.playerSpotsStore.playerSpots;
-  const roomStore = mainStore.roomStore;
+  const { roomStore } = useMainStore();
+  const { playerSpots } = useMainStore().playerSpotsStore;
 
   // dealing cards to each spot with bets and dealer
   const handleDeal = useCallback(() => {

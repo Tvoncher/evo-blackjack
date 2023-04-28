@@ -120,7 +120,9 @@ export class PlayerSpotsStore {
     let totalWin: number = 0;
     this.playerSpots.forEach((playerSpot) => {
       totalWin += playerSpot.roundProfit;
+      console.log("round profit", playerSpot.roundProfit);
     });
+
     mainStore.userStore.setTotalWin(totalWin);
   }
 
@@ -129,18 +131,20 @@ export class PlayerSpotsStore {
     this.playerSpots.forEach((playerSpot) => {
       const spotWinningStatus = playerSpot.endgameStatus;
 
-      switch (spotWinningStatus) {
-        case endgameStatus.win:
-          playerSpot.roundProfit = playerSpot.previousBet * 2;
-          break;
+      if (playerSpot.hand.length > 0) {
+        switch (spotWinningStatus) {
+          case endgameStatus.win:
+            playerSpot.roundProfit = playerSpot.previousBet * 2;
+            break;
 
-        case endgameStatus.lose:
-          playerSpot.roundProfit -= playerSpot.previousBet;
-          break;
+          case endgameStatus.lose:
+            playerSpot.roundProfit -= playerSpot.previousBet;
+            break;
 
-        case endgameStatus.tie:
-          playerSpot.roundProfit = playerSpot.previousBet;
-          break;
+          case endgameStatus.tie:
+            playerSpot.roundProfit = playerSpot.previousBet;
+            break;
+        }
       }
     });
   }
