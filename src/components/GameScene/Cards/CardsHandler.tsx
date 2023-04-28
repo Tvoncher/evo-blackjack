@@ -11,7 +11,9 @@ import {
   DEALER_SPOT_POSITION,
   PLAYER_SPOTS_POSITIONS,
   PLAYER_SPOTS_ROTATION,
+  ROTATED_CARD_VECTOR,
 } from "../../../utils/consts";
+import { RoomState } from "../../../types/types";
 
 // displaying cards
 export const CardsHandler: FC = observer(() => {
@@ -19,6 +21,7 @@ export const CardsHandler: FC = observer(() => {
   const [cardMesh, setCardMesh] = useState<Mesh | null>(null);
   const dealerHand = mainStore.roomStore.dealerHand;
   const playerSpots = mainStore.playerSpotsStore.playerSpots;
+  const roomState = mainStore.roomStore.roomState;
 
   useEffect(() => {
     const cardTask = assetManagerResult.taskNameMap["card"] as MeshAssetTask;
@@ -53,8 +56,10 @@ export const CardsHandler: FC = observer(() => {
           offset={i / 30}
           position={DEALER_SPOT_POSITION}
           rotation={
-            dealerHand.length === 2 && i === 1
-              ? new Vector3(0, 0, Math.PI)
+            dealerHand.length === 2 &&
+            roomState === RoomState.playing &&
+            i === 1
+              ? ROTATED_CARD_VECTOR
               : Vector3.Zero()
           }
         />
@@ -62,3 +67,4 @@ export const CardsHandler: FC = observer(() => {
     </>
   ) : null;
 });
+//roomState !== RoomState.dealerPlaying || (dealerHand.length === 2 && i === 2);

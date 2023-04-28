@@ -82,3 +82,5 @@ export const ENDING_ANIMATION_DURATION = 1400;
 
 //time in ms you need to wait for auto restart
 export const ROUND_RESTART_WAIT_TIME = 5000;
+
+export const ROTATED_CARD_VECTOR: Vector3 = new Vector3(0, 0, Math.PI);

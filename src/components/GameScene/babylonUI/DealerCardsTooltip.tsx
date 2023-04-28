@@ -6,10 +6,11 @@ import { observer } from "mobx-react-lite";
 // small tooltip displaying points / win / lose
 const DealerCardsTooltip: FC = observer(() => {
   const dealerPoints = mainStore.roomStore.dealerPoints;
+  const dealerHand = mainStore.roomStore.dealerHand;
 
   return (
     <>
-      {dealerPoints > 0 && (
+      {dealerHand.length > 0 && (
         <Html name="html" disposeInstanceOnUnmount>
           {
             <div
@@ -25,7 +26,7 @@ const DealerCardsTooltip: FC = observer(() => {
                 right: "25px",
               }}
             >
-              {dealerPoints}
+              {dealerHand.length === 2 ? dealerHand[0].value : dealerPoints}
             </div>
           }
         </Html>
