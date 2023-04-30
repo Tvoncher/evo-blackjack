@@ -3,7 +3,7 @@ import { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh";
 import { FC, useCallback } from "react";
 import { ICardProps } from "../../../types/types";
 import { CARD_SCALING } from "../../../utils/consts";
-import { getCardMaterial } from "../../../utils/cards";
+import { getCardMaterial } from "../../../utils/Cards";
 
 /*creating card model from base mesh
 take a look at mesh property disposeInstanceOnUnmount
