@@ -10,11 +10,6 @@ If you are interested in exploring my blackjack app, i suggest starting your jou
 
 I will definitely continue developing this app after code review,so stay tuned :)
 
-1. Proceed to Local launch
-2. Run `yarn install` in the root folder
-3. Run server with `yarn start`.
-4. Enjoy coding.
-
 ## Local launch
 
 1. Clone this repo: git clone https://github.com/Tvoncher/evo-blackjack
