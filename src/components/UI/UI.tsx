@@ -5,7 +5,7 @@ import WinLossPopup from "./WinLossPopup/WinLossPopup";
 import BalanceAndBet from "./BalanceAndBet/BalanceAndBet";
 import { useMainStore } from "../../hooks/useMainStore";
 
-//handling all ui elements (except of babylonjs based)
+ //handling all ui elements (except of babylonjs based cause of library limitations)
 const UI: FC = observer(() => {
   const { roomState } = useMainStore().roomStore;
   return (

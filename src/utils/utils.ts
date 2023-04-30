@@ -79,7 +79,6 @@ export const loadUser = (userData: string) => {
   };
 };
 
-//need this for tests
 export const dummyCards: ICard[] = [
   {
     suit: "hearts",
@@ -113,7 +112,7 @@ export const dummyCards: ICard[] = [
   },
 ];
 
-export const initialDeck = [
+export const initialDeck: ICard[] = [
   {
     suit: "hearts",
     rank: 2,

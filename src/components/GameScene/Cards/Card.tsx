@@ -5,7 +5,11 @@ import { ICardProps } from "../../../types/types";
 import { CARD_SCALING } from "../../../utils/consts";
 import { getCardMaterial } from "../../../utils/cards";
 
-//creating card model from base mesh
+/*creating card model from base mesh
+take a look at mesh property disposeInstanceOnUnmount
+need this to clear memory every time card is being deleted
+(super important cause here we are creating new material for each card)
+*/
 const Card: FC<ICardProps> = ({
   card,
   offset,

@@ -2,6 +2,19 @@
 
 ## https://evo-blackjack.surge.sh/
 
+Welcome to my version of first person blackjack!
+
+My objective was to integrate 3D graphics from Babylonjs with JSX syntax and write code in the style of Reactjs, creating 3D objects as functional and reusable components.
+
+If you are interested in exploring my blackjack app, i suggest starting your journey with the GameScene component, which is responsible for rendering all 3D and will help you understand better how Babylonjs is intagrated with the JSX syntax.
+
+I will definitely continue developing this app after code review,so stay tuned :)
+
+1. Proceed to Local launch
+2. Run `yarn install` in the root folder
+3. Run server with `yarn start`.
+4. Enjoy coding.
+
 ## Local launch
 
 1. Clone this repo: git clone https://github.com/Tvoncher/evo-blackjack

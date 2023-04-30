@@ -1,14 +1,14 @@
 import { Mesh, Texture } from "@babylonjs/core";
 import { FC, useCallback } from "react";
 import { IChipProps } from "../../../../types/types";
+import { observer } from "mobx-react-lite";
+import { registerChipActions } from "../../../../utils/utils";
+import { useMainStore } from "../../../../hooks/useMainStore";
 import {
   CHIP_DIAMETER,
   CHIP_HEIGHT,
   CHIP_HIGHLIGHTING_COLOR,
 } from "../../../../utils/consts";
-import { observer } from "mobx-react-lite";
-import { registerChipActions } from "../../../../utils/utils";
-import { useMainStore } from "../../../../hooks/useMainStore";
 
 // rendering chip and highlighting it
 const Chip: FC<IChipProps> = observer(({ name, position }) => {

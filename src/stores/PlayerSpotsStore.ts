@@ -120,7 +120,6 @@ export class PlayerSpotsStore {
     let totalWin: number = 0;
     this.playerSpots.forEach((playerSpot) => {
       totalWin += playerSpot.roundProfit;
-      console.log("round profit", playerSpot.roundProfit);
     });
 
     mainStore.userStore.setTotalWin(totalWin);

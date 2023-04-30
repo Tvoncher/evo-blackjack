@@ -9,7 +9,7 @@ export interface IUser {
 
 export interface ICard {
   rank: number | string;
-  suit: string;
+  suit: string | Suit;
   value: number;
 }
 

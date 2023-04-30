@@ -9,7 +9,8 @@ const PlayerSpotMaterial: FC<IPlayerSpotMaterialProps> = ({
   const playerSpotTexture: Texture = new Texture(
     "textures/playerSpot/playerSpot.png"
   );
-  playerSpotTexture.hasAlpha = true; // need it to use as alpha (makes mesh geometry invisible)
+  // need this to use as alpha (mesh geometry is already invisible)
+  playerSpotTexture.hasAlpha = true;
 
   return (
     <standardMaterial

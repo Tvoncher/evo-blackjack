@@ -1,8 +1,8 @@
+import { MainStoreContext, mainStore } from "../../stores/MainStore";
 import { useState } from "react";
 import GameScene from "../GameScene/GameScene";
 import GreetingScreen from "../GreetingScrene/GreetingScreen";
 import "./App.css";
-import { MainStoreContext, mainStore } from "../../stores/MainStore";
 
 function App() {
   const [isStarted, setIsStarted] = useState<boolean>(false);

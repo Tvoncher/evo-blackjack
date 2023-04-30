@@ -48,7 +48,7 @@ export const CardsHandler: FC = observer(() => {
       {/*dealer cards*/}
       {dealerHand.map((card, i) => (
         <Card
-          key={card.rank + card.suit + i}
+          key={card.rank + card.suit + Math.random()}
           card={cardMesh}
           value={card.value}
           suit={card.suit}
