@@ -8,7 +8,7 @@ My objective was to integrate 3D graphics from Babylonjs with JSX syntax and wri
 
 If you are interested in exploring my blackjack app, i suggest starting your journey with the GameScene component, which is responsible for rendering all 3D and will help you understand better how Babylonjs is intagrated with the JSX syntax.
 
-I will definitely continue developing this app after code review,so stay tuned :)
+Updated version: https://github.com/Tvoncher/blackjack
 
 ## Local launch
 
